@@ -1,0 +1,31 @@
+[package]
+name = "calc-impl"
+version = "0.2.0"
+authors = ["Mabi19 <mateuszbartnik33@gmail.com>"]
+edition = "2018"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[features]
+# default = ["wee_alloc"]
+default = []
+
+[dependencies]
+wasm-bindgen = "0.2.63"
+
+# `wee_alloc` is a tiny allocator for wasm that is only ~1K in code size
+# compared to the default allocator's ~10K. It is slower than the default
+# allocator, however.
+wee_alloc = { version = "0.4.5", optional = true }
+rustfft = "6.0.1"
+num-complex = "0.4.2"
+oorandom = "11.1.3"
+
+[dev-dependencies]
+wasm-bindgen-test = "0.3.13"
+
+[profile.release]
+# Here, opt-level 3 generates a smaller binary and runs faster.
+opt-level = 3
+lto = true

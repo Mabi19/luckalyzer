@@ -1,0 +1,62 @@
+{
+    "f1": {},
+    "f2": {},
+    "f3": {},
+    "f4": {},
+    "f5": {
+        "LIVID_DAGGER": {
+            "name": "Livid Dagger",
+            "mainChest": 0.011561,
+            "otherChests": 0.0031,
+            "fillScore": 25950,
+            "color": "gold"
+        },
+        "SHADOW_FURY": {
+            "name": "Shadow Fury",
+            "mainChest": 0.00289,
+            "otherChests": 0,
+            "fillScore": 103800,
+            "color": "gold"
+        },
+        "LAST_BREATH": {
+            "name": "Last Breath",
+            "mainChest": 0.00289,
+            "otherChests": 0,
+            "fillScore": 103800,
+            "color": "gold"
+        }
+    },
+    "f6": {
+        "PRECURSOR_EYE": {
+            "name": "Precursor Eye",
+            "mainChest": 0.000733,
+            "otherChests": 0,
+            "fillScore": 409350,
+            "color": "gold"
+        },
+        "GIANTS_SWORD": {
+            "name": "Giant's Sword",
+            "mainChest": 0.001099,
+            "otherChests": 0,
+            "fillScore": 272900,
+            "color": "gold"
+        },
+        "SUMMONING_RING": {
+            "name": "Summoning Ring",
+            "mainChest": 0.003664,
+            "otherChests": 0,
+            "fillScore": 81870,
+            "color": "blue"
+        }
+    },
+    "f7": {
+        "NECRON_HANDLE": {
+            "name": "Necron's Handle",
+            "mainChest": 0.000964,
+            "otherChests": 0,
+            "fillScore": 311284,
+            "color": "gold"
+        }
+    },
+    "m7": {}
+}

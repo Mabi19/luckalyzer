@@ -1,0 +1,56 @@
+{
+    "zombie": {
+        "SCYTHE_BLADE": {
+            "name": "Scythe Blade",
+            "probability": { "num": 1, "den": 968 },
+            "rngMeterBosses": 323,
+            "color": "gold"
+        },
+        "SHARD_OF_THE_SHREDDED": {
+            "name": "Shard of the Shredded",
+            "probability": { "num": 1, "den": 1816 },
+            "rngMeterBosses": 605,
+            "color": "gold"
+        },
+        "WARDEN_HEART": {
+            "name": "Warden Heart",
+            "probability": { "num": 2, "den": 14527 },
+            "rngMeterBosses": 2421,
+            "color": "gold"
+        }
+    },
+    "spider": {
+        "DIGESTED_MOSQUITO": {
+            "name": "Digested Mosquito",
+            "probability": { "num": 1, "den": 1717 },
+            "rngMeterBosses": 1717,
+            "color": "gold"
+        },
+        "FLY_SWATTER": {
+            "name": "Fly Swatter",
+            "probability": { "num": 1, "den": 601 },
+            "rngMeterBosses": 601,
+            "color": "dark-purple"
+        },
+        "TARANTULA_TALISMAN": {
+            "name": "Tarantula Talisman",
+            "probability": { "num": 1, "den": 601 },
+            "rngMeterBosses": 601,
+            "color": "dark-purple"
+        }
+    },
+    "wolf": {
+        "COUTURE_RUNE": {
+            "name": "◆ Couture Rune I",
+            "probability": { "num": 1, "den": 412 },
+            "rngMeterBosses": 439,
+            "color": "gold"
+        },
+        "RED_CLAW_EGG": {
+            "name": "Red Claw Egg",
+            "probability": { "num": 1, "den": 822 },
+            "rngMeterBosses": 821,
+            "color": "dark-purple"
+        }
+    }
+}

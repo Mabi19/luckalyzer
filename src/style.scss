@@ -1,0 +1,224 @@
+@use "sass:list";
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'Minecraft';
+    src: url('assets/MinecraftRegular.woff2') format(woff2);
+    font-weight: normal;
+    font-style: normal;
+    font-display: fallback;
+}
+
+@font-face {
+    font-family: 'Minecraft';
+    src: url('assets/MinecraftBold.woff2') format(woff2);
+    font-weight: bold;
+    font-style: normal;
+    font-display: fallback;
+}
+
+/* Text colour values */
+$colors: (
+    "black": #000 #000,
+    "dark-blue": #00a #00002a,
+    "dark-green": #0a0 #002a00,
+    "dark-aqua": #0aa #002a2a,
+    "dark-red": #a00 #2a0000,
+    "dark-purple": #a0a #2a002a,
+    "gold": #fa0 #2a2a00,
+    "gray": #aaa #2a2a2a,
+    "dark-gray": #555 #151515,
+    "blue": #55f #15153f,
+    "green": #5f5 #153f15,
+    "aqua": #5ff #153f3f,
+    "red": #f55 #3f1515,
+    "light-purple": #f5f #3f153f,
+    "yellow": #ff5 #3f3f15,
+    "white": #fff #3f3f3f,
+);
+
+:root {
+    font-family: 'Minecraft', 'sans-serif';
+    font-size: 24px;
+    scrollbar-color: #4b4b4b #1f1f1f;
+
+    /* misc colour values */
+    --input-background: #2f2f2f;
+    --input-border: #1f1f1f;
+    --focus-border: 2px dashed var(--blue);
+    @each $color, $vlist in $colors {
+        --#{$color}: #{list.nth($vlist, 1)};
+        --#{$color}-shadow: #{list.nth($vlist, 2)};
+    }
+}
+
+/* Text colour classes */
+@each $color, $vlist in $colors {
+    .t-#{$color} {
+        color: var(--#{$color});
+    }
+
+    .t-#{$color}.shadow, .shadow .t-#{$color} {
+        text-shadow: 1.99px 1.99px var(--#{$color}-shadow);
+    }
+}
+
+/* fallback for scrollbar-color */
+*::-webkit-scrollbar-thumb {
+    background-color: #4b4b4b;
+}
+
+*::-webkit-scrollbar {
+    background-color: #1f1f1f;
+}
+
+body {
+    margin: 0;
+}
+
+label.row {
+    display: block;
+}
+
+label.row * + * {
+    margin-left: 8px;
+}
+
+hr {
+    border-top: 2px solid #7f7f7f;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+}
+
+.indent {
+    margin-left: 2ch;
+    color: var(--gray);
+    font-style: italic;
+}
+
+input[type=text], input[type=number] {
+    font-family: 'Minecraft', 'sans-serif';
+    font-size: 24px;
+    width: 8ch;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    padding: 0 4px;
+
+    color: white;
+    background-color: var(--input-background);
+    border: 2px solid var(--input-border);
+    /* color: white;
+    background-color: black;
+    border: 2px solid #a0a0a0; */
+    border-radius: 0;
+    outline: none;
+
+    &:invalid {
+        border: 2px solid var(--red);
+    }
+
+    &:focus-visible {
+        border: var(--focus-border);
+    }
+}
+
+input[type=checkbox] {
+    box-sizing: content-box;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    margin-top: 0;
+    margin-bottom: 0;
+    background-color: var(--input-background);
+    border: 2px solid var(--input-border);
+    vertical-align: text-bottom;
+
+    &:checked::after {
+        // HACK: The image is scaled to 4x its natural size.
+        // This makes it look a lot better when scaling down with the auto algorithm.
+        // (The pixelated algorithm looks worse because the pixel grids don't align.)
+        background-image: url('assets/checkmark.png');
+        background-position: 50% 50%;
+        background-size: contain;
+        background-repeat: no-repeat;
+        image-rendering: auto;
+        width: 14px;
+        height: 14px;
+        content: "";
+        display: block;
+        margin: 2px;
+    }
+
+    &:focus-visible {
+        border: var(--focus-border);
+        outline: none;
+    }
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+.select-wrapper {
+    background-color: var(--input-background);
+    margin-top: 1px;
+    margin-bottom: 1px;
+    position: relative;
+}
+
+.select-wrapper::after {
+    content: "▼";
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    transform: translate(0, -50%);
+    pointer-events: none;
+    background-color: var(--input-background);
+}
+
+.select-wrapper select {
+    appearance: none;
+
+    font-family: 'Minecraft', 'sans-serif';
+    font-size: 24px;
+    width: 20ch;
+
+    background-color: var(--input-background);
+
+    border: 2px solid var(--input-border);
+    border-radius: 0;
+    outline: none;
+
+    padding: 0 4px;
+
+    &:focus-visible {
+        border: var(--focus-border);
+    }
+}
+
+.select-wrapper select.extra-wide {
+    width: 27ch;
+}
+
+/* this is outside .select-wrapper because of colour classes */
+select {
+    color: white;
+}
+
+option {
+    font-family: "Minecraft", sans-serif;
+}
