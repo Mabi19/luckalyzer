@@ -19,6 +19,7 @@ jobs:
           node-version: 16
       - uses: actions-rs/toolchain@v1
         with:
+          toolchain: stable
           target: wasm32-unknown-unknown
           override: true
       - name: Install wasm-pack
