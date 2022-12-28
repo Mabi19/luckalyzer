@@ -4,19 +4,33 @@
             <AppLogo/>
             <PickerRoot/>
         </div>
-        <img :src="imageURLs[background]" class="background"/>
-        <img v-if="newBackground" :src="imageURLs[newBackground]" @animationend="finishAnim" class="new-bg background"/>
+        <img :src="imageURLs[background]" class="background" role="presentation"/>
+        <img v-if="newBackground" :src="imageURLs[newBackground]" @animationend="finishAnim" class="new-bg background" role="presentation"/>
     </div>
+    <footer class="footer t-white">
+        v{{ version }} &bull; <a @click.prevent="showAbout" class="link-button" href="#">about</a> &bull;
+        <a class="link-button github-link" href="https://github.com/Mabi19/luckalyzer"><img src="./assets/github-mark.svg" alt="GitHub logo" class="github-logo"/> <span>github</span></a>
+    </footer>
+    <AboutDialog ref="aboutDialog"/>
 </template>
 
 <script setup lang="ts">
 import AppLogo from "./components/AppLogo.vue";
 import PickerRoot from "./components/PickerRoot.vue";
+import AboutDialog from "./components/AboutDialog.vue";
 import { currentBackground, Background, imageURLs } from "./Background";
 import { ref, watch } from "vue";
 
 const background = ref<Background>(currentBackground.value);
 const newBackground = ref<Background | null>(null);
+const version = __APP_VERSION__;
+
+const aboutDialog = ref<InstanceType<typeof AboutDialog> | null>(null);
+
+function showAbout() {
+    console.log(aboutDialog.value);
+    aboutDialog.value?.open();
+}
 
 watch(currentBackground, () => {
     newBackground.value = currentBackground.value;
@@ -33,6 +47,7 @@ function finishAnim() {
 <style scoped>
 .container {
     width: 100%;
+    flex-grow: 1; /* #app is a flexbox */
 }
 
 .column {
@@ -77,5 +92,28 @@ function finishAnim() {
         width: 100vw;
         height: auto;
     }
+}
+
+.footer {
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.7);
+    text-align: center;
+}
+
+.github-link {
+    text-decoration: none;
+}
+
+.github-link span {
+    text-decoration: underline;
+    text-decoration-thickness: 1.5px;
+}
+
+.github-logo {
+    height: 1em;
+    vertical-align: -4px;
 }
 </style>

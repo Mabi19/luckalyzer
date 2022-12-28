@@ -48,11 +48,16 @@ $colors: (
     /* misc colour values */
     --input-background: #2f2f2f;
     --input-border: #1f1f1f;
+    --input-focus-border: 2px solid var(--gray);
     --focus-border: 2px dashed var(--blue);
     @each $color, $vlist in $colors {
         --#{$color}: #{list.nth($vlist, 1)};
         --#{$color}-shadow: #{list.nth($vlist, 2)};
     }
+}
+
+:focus-visible {
+    outline: var(--focus-border);
 }
 
 /* Text colour classes */
@@ -79,6 +84,12 @@ body {
     margin: 0;
 }
 
+#app {
+    display: flex;
+    flex-flow: column nowrap;
+    min-height: 100vh;
+}
+
 label.row {
     display: block;
 }
@@ -92,6 +103,24 @@ hr {
     border-left: none;
     border-right: none;
     border-bottom: none;
+}
+
+a {
+    text-decoration: underline;
+    text-decoration-thickness: 1.5px;
+    cursor: pointer;
+}
+
+a.link-button {
+    color: white;
+}
+
+:link {
+    color: var(--aqua);
+}
+
+:visited {
+    color: var(--light-purple);
 }
 
 .indent {
@@ -122,7 +151,7 @@ input[type=text], input[type=number] {
     }
 
     &:focus-visible {
-        border: var(--focus-border);
+        border: var(--input-focus-border);
     }
 }
 
@@ -154,7 +183,7 @@ input[type=checkbox] {
     }
 
     &:focus-visible {
-        border: var(--focus-border);
+        border: var(--input-focus-border);
         outline: none;
     }
 }
@@ -206,7 +235,7 @@ input[type=number] {
     padding: 0 4px;
 
     &:focus-visible {
-        border: var(--focus-border);
+        border: var(--input-focus-border);
     }
 }
 
