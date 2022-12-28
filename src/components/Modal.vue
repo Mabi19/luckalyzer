@@ -8,6 +8,9 @@
                 <div class="modal-content">
                     <slot/>
                 </div>
+                <div class="modal-footer">
+                    <slot name="footer"/>
+                </div>
             </div>
         </div>
     </Teleport>
@@ -81,6 +84,10 @@ onUnmounted(() => {
 
 .modal-content {
     background-color: #404040;
+}
+
+.modal-footer {
+    color: var(--gray);
 }
 
 .modal-close {

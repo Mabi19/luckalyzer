@@ -15,6 +15,9 @@
             Background pictures taken using <a href="https://www.complementary.dev/shaders-v4/">Complementary Shaders</a> and <a href="https://imgur.com/0tDBwww">lots of Fabric mods</a>.
             Minecraft font by Mojang.
         </p>
+        <template v-slot:footer>
+            version {{ version }} (build {{ buildID }})
+        </template>
     </Modal>
 </template>
 
@@ -22,6 +25,9 @@
 import Modal from "./Modal.vue";
 import CreditsPlayer from "./CreditsPlayer.vue";
 import { ref } from "vue";
+
+const version = __APP_VERSION__;
+const buildID = __BUILD_ID__;
 
 const aboutShown = ref(false);
 

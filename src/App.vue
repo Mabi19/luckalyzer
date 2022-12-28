@@ -4,11 +4,12 @@
             <AppLogo/>
             <PickerRoot/>
         </div>
-        <img :src="imageURLs[background]" class="background"/>
-        <img v-if="newBackground" :src="imageURLs[newBackground]" @animationend="finishAnim" class="new-bg background"/>
+        <img :src="imageURLs[background]" class="background" role="presentation"/>
+        <img v-if="newBackground" :src="imageURLs[newBackground]" @animationend="finishAnim" class="new-bg background" role="presentation"/>
     </div>
     <footer class="footer t-white">
-        v{{ version }} &bull; <a @click="showAbout" class="link-button" href="#">about</a> &bull; <a class="link-button" href="https://github.com/Mabi19/luckalyzer">github</a>
+        v{{ version }} &bull; <a @click.prevent="showAbout" class="link-button" href="#">about</a> &bull;
+        <a class="link-button github-link" href="https://github.com/Mabi19/luckalyzer"><img src="./assets/github-mark.svg" alt="GitHub logo" class="github-logo"/> <span>github</span></a>
     </footer>
     <AboutDialog ref="aboutDialog"/>
 </template>
@@ -100,5 +101,19 @@ function finishAnim() {
     padding: 12px;
     background: rgba(0, 0, 0, 0.7);
     text-align: center;
+}
+
+.github-link {
+    text-decoration: none;
+}
+
+.github-link span {
+    text-decoration: underline;
+    text-decoration-thickness: 1.5px;
+}
+
+.github-logo {
+    height: 1em;
+    vertical-align: -4px;
 }
 </style>
