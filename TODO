@@ -1,6 +1,5 @@
 - icon (four-leaf clover?)
-- create an <AppSelect> component for easier colouring
-- set up CD
+- create an `<AppSelect>` component for easier colouring
 - more flavour text
 - get someone to show me the Slayer RNG meter values
 - more data for Dungeons mode
