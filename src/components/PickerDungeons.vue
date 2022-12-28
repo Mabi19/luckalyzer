@@ -47,7 +47,7 @@
             <input type="number" v-model="attempts" min="1"/>
         </label>
         <label class="row">
-            <span>Selected item drop count <span v-if="rngMeterUsed" class="t-gray inline-note">(NOT including drops obtained by filling the RNG meter)</span></span>
+            <span>Selected item drop count <span v-if="rngMeterUsed" class="t-gray inline-note">(NOT including guaranteed drops from completing the RNG meter)</span></span>
             <input type="number" v-model="successes" min="0" :max="attempts ?? undefined"/>
         </label>
     </Panel>
@@ -174,9 +174,3 @@ watchEffect(() => {
     }
 });
 </script>
-
-<style scoped>
-.inline-note {
-    font-style: italic;
-}
-</style>

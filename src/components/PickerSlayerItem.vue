@@ -34,6 +34,7 @@
         </label>
         <label class="row">
             <span>Selected item drops</span>
+            <span class="t-gray inline-note" v-if="rngMeterUsed">(including guaranteed drops from completing the RNG meter)</span>
             <input type="number" v-model="successes" min="1" :max="attempts ?? undefined"/>
         </label>
     </Panel>
