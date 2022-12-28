@@ -41,6 +41,41 @@
             "fillScore": 272900,
             "color": "gold"
         },
+        "NECROMANCER_SWORD": {
+            "name": "Necromancer Sword",
+            "mainChest": 0.007329,
+            "otherChests": 0.0043,
+            "fillScore": 40935,
+            "color": "gold"
+        },
+        "NECROMANCER_LORD_HELMET": {
+            "name": "Necromancer Lord Helmet",
+            "mainChest": 0.014657,
+            "otherChests": 0.019,
+            "fillScore": 20467,
+            "color": "gold"
+        },
+        "NECROMANCER_LORD_CHESTPLATE": {
+            "name": "Necromancer Lord Helmet",
+            "mainChest": 0.002931,
+            "otherChests": 0,
+            "fillScore": 102337,
+            "color": "gold"
+        },
+        "NECROMANCER_LORD_LEGGINGS": {
+            "name": "Necromancer Lord Leggings",
+            "mainChest": 0.010993,
+            "otherChests": 0.0065,
+            "fillScore": 27290,
+            "color": "gold"
+        },
+        "NECROMANCER_LORD_BOOTS": {
+            "name": "Necromancer Lord Boots",
+            "mainChest": 0.021986,
+            "otherChests": 0.0387,
+            "fillScore": 13645,
+            "color": "gold"
+        },
         "SUMMONING_RING": {
             "name": "Summoning Ring",
             "mainChest": 0.003664,
@@ -55,7 +90,84 @@
             "mainChest": 0.000964,
             "otherChests": 0,
             "fillScore": 311284,
+            "color": "dark-purple"
+        },
+        "IMPLOSION_SCROLL": {
+            "name": "Implosion",
+            "mainChest": 0.001112,
+            "otherChests": 0,
+            "fillScore": 269780,
+            "color": "dark-purple"
+        },
+        "SHADOW_WARP_SCROLL": {
+            "name": "Shadow Warp",
+            "mainChest": 0.001112,
+            "otherChests": 0,
+            "fillScore": 269780,
+            "color": "dark-purple"
+        },
+        "WITHER_SHIELD_SCROLL": {
+            "name": "Wither Shield",
+            "mainChest": 0.001112,
+            "otherChests": 0,
+            "fillScore": 269780,
+            "color": "dark-purple"
+        },
+        "AUTO_RECOMBOBULATOR": {
+            "name": "Auto Recombobulator",
+            "mainChest": 0.005931,
+            "otherChests": 0,
+            "fillScore": 50583,
             "color": "gold"
+        },
+        "WITHER_HELMET": {
+            "name": "Wither Helmet",
+            "mainChest": 0.035585,
+            "otherChests": 0.0492,
+            "fillScore": 8430,
+            "color": "gold"
+        },
+        "WITHER_CHESTPLATE": {
+            "name": "Wither Helmet",
+            "mainChest": 0.0606,
+            "otherChests": 0.0492,
+            "fillScore": 50583,
+            "color": "gold"
+        },
+        "WITHER_LEGGINGS": {
+            "name": "Wither Leggings",
+            "mainChest": 0.023723,
+            "otherChests": 0.0179,
+            "fillScore": 12645,
+            "color": "gold"
+        },
+        "WITHER_BOOTS": {
+            "name": "Wither Boots",
+            "mainChest": 0.035585,
+            "otherChests": 0.1336,
+            "fillScore": 8430,
+            "color": "gold"
+        },
+        "MAXOR_THE_FISH": {
+            "name": "Maxor the Fish",
+            "mainChest": 0.000741,
+            "otherChests": 0,
+            "fillScore": 404670,
+            "color": "red"
+        },
+        "STORM_THE_FISH": {
+            "name": "Storm the Fish",
+            "mainChest": 0.000741,
+            "otherChests": 0,
+            "fillScore": 404670,
+            "color": "red"
+        },
+        "GOLDOR_THE_FISH": {
+            "name": "Goldor the Fish",
+            "mainChest": 0.000741,
+            "otherChests": 0,
+            "fillScore": 404670,
+            "color": "red"
         }
     },
     "m7": {}
