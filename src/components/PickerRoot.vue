@@ -5,10 +5,10 @@
             <SelectWrapper>
                 <select v-model="selected">
                     <option :value="null" disabled>Select an option...</option>
-                    <option value="experiments">Experiments</option>
-                    <option value="custom">Custom</option>
                     <option value="dungeons">Dungeons</option>
+                    <option value="experiments">Experiments</option>
                     <option value="slayer">Slayer</option>
+                    <option value="custom">Custom</option>
                 </select>
             </SelectWrapper>
         </label>
