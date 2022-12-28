@@ -1,5 +1,5 @@
 <template>
-    <span class="head-wrapper"><img class="head" :src="imageURL()" :alt="imageAlt()"/>{{ ign }}</span>
+    <div class="head-wrapper"><img class="head" :src="imageURL()" :alt="imageAlt()"/><span>{{ ign }}</span></div>
 </template>
 
 <script setup lang="ts">
@@ -14,15 +14,14 @@ const imageAlt = () => `${props.ign}'s Minecraft head`;
 
 <style scoped>
 .head-wrapper {
-    display: inline-flex;
-    flex-flow: row nowrap;
-    gap: 8px;
-    vertical-align: text-bottom;
+    display: inline;
+    vertical-align: baseline;
     color: var(--green);
 }
 
 .head {
     height: 1em;
     vertical-align: text-bottom;
+    margin-right: 8px;
 }
 </style>
