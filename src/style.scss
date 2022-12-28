@@ -248,6 +248,13 @@ select {
     color: white;
 }
 
+/* all browsers have bold text, but some are additionally italic, so disable that */
+/* also remind the optgroup that we've set the font */
+optgroup {
+    font-family: "Minecraft", sans-serif;
+    font-style: normal;
+}
+
 option {
     font-family: "Minecraft", sans-serif;
 }
