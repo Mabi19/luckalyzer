@@ -14,7 +14,7 @@ const imageAlt = () => `${props.ign}'s Minecraft head`;
 
 <style scoped>
 .head-wrapper {
-    display: inline;
+    display: inline-block;
     vertical-align: baseline;
     color: var(--green);
 }
