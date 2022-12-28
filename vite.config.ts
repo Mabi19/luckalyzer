@@ -3,10 +3,11 @@ import vue from '@vitejs/plugin-vue'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [
-    vue(),
-  ],
-  worker: {
-    format: "iife", // this is needed for Firefox
-  }
+    plugins: [
+        vue(),
+    ],
+    worker: {
+        format: "iife", // this is needed for Firefox
+    },
+    base: "/luckalyzer/"
 });
