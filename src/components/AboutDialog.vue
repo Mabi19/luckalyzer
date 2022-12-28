@@ -13,6 +13,7 @@
         </p>
         <p>
             Background pictures taken using <a href="https://www.complementary.dev/shaders-v4/">Complementary Shaders</a> and <a href="https://imgur.com/0tDBwww">lots of Fabric mods</a>.
+            Icon made by <CreditsPlayer ign="darth_taco_tmp"/>.
             Minecraft font by Mojang.
         </p>
         <template v-slot:footer>
