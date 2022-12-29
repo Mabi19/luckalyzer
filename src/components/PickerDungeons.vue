@@ -6,18 +6,11 @@
                 <select v-model="floor">
                     <option :value="null" disabled>Select an option...</option>
                     <optgroup label="Normal Mode">
-                        <option value="f1">F1</option>
-                        <option value="f2" disabled>F2</option>
-                        <option value="f3" disabled>F3</option>
-                        <option value="f4" disabled>F4</option>
                         <option value="f5">F5</option>
                         <option value="f6">F6</option>
                         <option value="f7">F7</option>
                     </optgroup>
                     <optgroup label="Master Mode">
-                        <option value="m1" disabled>M1</option>
-                        <option value="m2" disabled>M2</option>
-                        <option value="m3" disabled>M3</option>
                         <option value="m4" disabled>M4</option>
                         <option value="m5" disabled>M5</option>
                         <option value="m6" disabled>M6</option>
@@ -47,7 +40,7 @@
             <input type="number" v-model="attempts" min="1"/>
         </label>
         <label class="row">
-            <span>Selected item drop count <span v-if="rngMeterUsed" class="t-gray inline-note">(NOT including guaranteed drops from completing the RNG meter)</span></span>
+            <span>Selected item drop count <span v-if="rngMeterUsed" class="inline-note">(NOT including guaranteed drops from completing the RNG meter)</span></span>
             <input type="number" v-model="successes" min="0" :max="attempts ?? undefined"/>
         </label>
     </Panel>

@@ -13,7 +13,7 @@
             </SelectWrapper>
         </label>
         <label class="row">
-            <span>Aatrox's Pathfinder?</span>
+            <span>Aatrox's Pathfinder? <span class="inline-note">(+20% drop chance)</span></span>
             <input type="checkbox" v-model="aatroxPathfinder"/>
         </label>
         <label class="row">
@@ -34,7 +34,7 @@
         </label>
         <label class="row">
             <span>Selected item drops</span>
-            <span class="t-gray inline-note" v-if="rngMeterUsed">(including guaranteed drops from completing the RNG meter)</span>
+            <span class="inline-note" v-if="rngMeterUsed">(including guaranteed drops from completing the RNG meter)</span>
             <input type="number" v-model="successes" min="1" :max="attempts ?? undefined"/>
         </label>
     </Panel>
