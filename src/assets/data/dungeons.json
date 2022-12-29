@@ -1,16 +1,5 @@
 {
-    "f1": {},
-    "f2": {},
-    "f3": {},
-    "f4": {},
     "f5": {
-        "LIVID_DAGGER": {
-            "name": "Livid Dagger",
-            "mainChest": 0.011561,
-            "otherChests": 0.0031,
-            "fillScore": 25950,
-            "color": "gold"
-        },
         "SHADOW_FURY": {
             "name": "Shadow Fury",
             "mainChest": 0.00289,
@@ -24,6 +13,41 @@
             "otherChests": 0,
             "fillScore": 103800,
             "color": "gold"
+        },
+        "LIVID_DAGGER": {
+            "name": "Livid Dagger",
+            "mainChest": 0.011561,
+            "otherChests": 0.0031,
+            "fillScore": 25950,
+            "color": "gold"
+        },
+        "SHADOW_ASSASSIN_HELMET": {
+            "name": "Shadow Assassin Helmet",
+            "mainChest": 0.028902,
+            "otherChests": 0.049,
+            "fillScore": 10380,
+            "color": "dark-purple"
+        },
+        "SHADOW_ASSASSIN_CHESTPLATE": {
+            "name": "Shadow Assassin Chestplate",
+            "mainChest": 0.00578,
+            "otherChests": 0,
+            "fillScore": 51900,
+            "color": "dark-purple"
+        },
+        "SHADOW_ASSASSIN_LEGGINGS": {
+            "name": "Shadow Assassin Leggings",
+            "mainChest": 0.014451,
+            "otherChests": 0.0124,
+            "fillScore": 20760,
+            "color": "dark-purple"
+        },
+        "SHADOW_ASSASSIN_BOOTS": {
+            "name": "Shadow Assassin Boots",
+            "mainChest": 0.043353,
+            "otherChests": 0.0844,
+            "fillScore": 6920,
+            "color": "dark-purple"
         }
     },
     "f6": {
@@ -56,7 +80,7 @@
             "color": "gold"
         },
         "NECROMANCER_LORD_CHESTPLATE": {
-            "name": "Necromancer Lord Helmet",
+            "name": "Necromancer Lord Chestplate",
             "mainChest": 0.002931,
             "otherChests": 0,
             "fillScore": 102337,
@@ -123,28 +147,28 @@
         "WITHER_HELMET": {
             "name": "Wither Helmet",
             "mainChest": 0.035585,
-            "otherChests": 0.0492,
+            "otherChests": 0.0535,
             "fillScore": 8430,
             "color": "gold"
         },
         "WITHER_CHESTPLATE": {
-            "name": "Wither Helmet",
-            "mainChest": 0.0606,
-            "otherChests": 0.0492,
+            "name": "Wither Chestplate",
+            "mainChest": 0.005931,
+            "otherChests": 0.0031,
             "fillScore": 50583,
             "color": "gold"
         },
         "WITHER_LEGGINGS": {
             "name": "Wither Leggings",
             "mainChest": 0.023723,
-            "otherChests": 0.0179,
+            "otherChests": 0.0254,
             "fillScore": 12645,
             "color": "gold"
         },
         "WITHER_BOOTS": {
             "name": "Wither Boots",
             "mainChest": 0.035585,
-            "otherChests": 0.1336,
+            "otherChests": 0.2139,
             "fillScore": 8430,
             "color": "gold"
         },
@@ -170,5 +194,313 @@
             "color": "red"
         }
     },
-    "m7": {}
+    "m4": {
+        "MASTER_SKULL_TIER_3": {
+            "name": "Master Skull - Tier 3",
+            "mainChest": 0.041667,
+            "otherChests": 0,
+            "fillScore": 7200,
+            "color": "green"
+        },
+        "SECOND_MASTER_STAR": {
+            "name": "Second Master Star",
+            "mainChest": 0.027778,
+            "otherChests": 0,
+            "fillScore": 10800,
+            "color": "dark-pruple"
+        },
+        "SPIRIT_SWORD": {
+            "name": "Spirit Sword",
+            "mainChest": 0.013889,
+            "otherChests": 0,
+            "fillScore": 21600,
+            "color": "dark-purple"
+        },
+        "SPIRIT_BOW": {
+            "name": "Spirit Bow",
+            "mainChest": 0.013889,
+            "otherChests": 0,
+            "fillScore": 21600,
+            "color": "dark-purple"
+        },
+        "SPIRIT_BOOTS": {
+            "name": "Spirit Boots",
+            "mainChest": 0.013889,
+            "otherChests": 0.009,
+            "fillScore": 21600,
+            "color": "dark-purple"
+        },
+        "SPIRIT_PET": {
+            "name": "Spirit Pet",
+            "mainChest": 0.013889,
+            "otherChests": 0.0149,
+            "fillScore": 21600,
+            "color": "gold"
+        },
+        "SPIRIT_WING": {
+            "name": "Spirit Wing",
+            "mainChest": 0.027778,
+            "otherChests": 0,
+            "fillScore": 10800,
+            "color": "dark-purple"
+        }
+    },
+    "m5": {
+        "MASTER_SKULL_TIER_4": {
+            "name": "Master Skull - Tier 4",
+            "mainChest": 0.017241,
+            "otherChests": 0,
+            "fillScore": 17400,
+            "color": "green"
+        },
+        "THIRD_MASTER_STAR": {
+            "name": "Third Master Star",
+            "mainChest": 0.006897,
+            "otherChests": 0,
+            "fillScore": 43500,
+            "color": "dark-purple"
+        },
+        "SHADOW_FURY": {
+            "name": "Shadow Fury",
+            "mainChest": 0.003448,
+            "otherChests": 0,
+            "fillScore": 87000,
+            "color": "gold"
+        },
+        "LAST_BREATH": {
+            "name": "Last Breath",
+            "mainChest": 0.003448,
+            "otherChests": 0,
+            "fillScore": 87000,
+            "color": "gold"
+        },
+        "LIVID_DAGGER": {
+            "name": "Livid Dagger",
+            "mainChest": 0.013793,
+            "otherChests": 0.003,
+            "fillScore": 21750,
+            "color": "gold"
+        },
+        "SHADOW_ASSASSIN_HELMET": {
+            "name": "Shadow Assassin Helmet",
+            "mainChest": 0.034483,
+            "otherChests": 0.0577,
+            "fillScore": 8700,
+            "color": "dark-purple"
+        },
+        "SHADOW_ASSASSIN_CHESTPLATE": {
+            "name": "Shadow Assassin Chestplate",
+            "mainChest": 0.006897,
+            "otherChests": 0,
+            "fillScore": 43500,
+            "color": "dark-purple"
+        },
+        "SHADOW_ASSASSIN_LEGGINGS": {
+            "name": "Shadow Assassin Leggings",
+            "mainChest": 0.017241,
+            "otherChests": 0.0211,
+            "fillScore": 17400,
+            "color": "dark-purple"
+        },
+        "SHADOW_ASSASSIN_BOOTS": {
+            "name": "Shadow Assassin Boots",
+            "mainChest": 0.051724,
+            "otherChests": 0.0987,
+            "fillScore": 5800,
+            "color": "dark-purple"
+        }
+    },
+    "m6": {
+        "MASTER_SKULL_TIER_4": {
+            "name": "Master Skull - Tier 4",
+            "mainChest": 0.003638,
+            "otherChests": 0,
+            "fillScore": 82470,
+            "color": "green"
+        },
+        "FOURTH_MASTER_STAR": {
+            "name": "Fourth Master Star",
+            "mainChest": 0.003638,
+            "otherChests": 0,
+            "fillScore": 82470,
+            "color": "dark-purple"
+        },
+        "PRECURSOR_EYE": {
+            "name": "Precursor Eye",
+            "mainChest": 0.000728,
+            "otherChests": 0,
+            "fillScore": 412350,
+            "color": "gold"
+        },
+        "GIANTS_SWORD": {
+            "name": "Giant's Sword",
+            "mainChest": 0.001091,
+            "otherChests": 0,
+            "fillScore": 274860,
+            "color": "gold"
+        },
+        "NECROMANCER_SWORD": {
+            "name": "Necromancer Sword",
+            "mainChest": 0.007275,
+            "otherChests": 0.0077,
+            "fillScore": 41235,
+            "color": "gold"
+        },
+        "NECROMANCER_LORD_HELMET": {
+            "name": "Necromancer Lord Helmet",
+            "mainChest": 0.014551,
+            "otherChests": 0.0316,
+            "fillScore": 20617,
+            "color": "gold"
+        },
+        "NECROMANCER_LORD_CHESTPLATE": {
+            "name": "Necromancer Lord Chestplate",
+            "mainChest": 0.00291,
+            "otherChests": 0,
+            "fillScore": 103087,
+            "color": "gold"
+        },
+        "NECROMANCER_LORD_LEGGINGS": {
+            "name": "Necromancer Lord Leggings",
+            "mainChest": 0.010913,
+            "otherChests": 0.0116,
+            "fillScore": 27490,
+            "color": "gold"
+        },
+        "NECROMANCER_LORD_BOOTS": {
+            "name": "Necromancer Lord Boots",
+            "mainChest": 0.021826,
+            "otherChests": 0.0653,
+            "fillScore": 13745,
+            "color": "gold"
+        },
+        "SUMMONING_RING": {
+            "name": "Summoning Ring",
+            "mainChest": 0.003638,
+            "otherChests": 0.0035,
+            "fillScore": 82470,
+            "color": "blue"
+        }
+    },
+    "m7": {
+        "NECRON_DYE": {
+            "name": "Necron Dye",
+            "mainChest": 0.000221,
+            "otherChests": 0,
+            "fillScore": 1356000,
+            "color": "gold"
+        },
+        "DARK_CLAYMORE": {
+            "name": "Dark Claymore",
+            "mainChest": 0.000737,
+            "otherChests": 0,
+            "fillScore": 406800,
+            "color": "gold"
+        },
+        "THUNDERLORD_VII": {
+            "name": "Thunderlord VII",
+            "mainChest": 0.001475,
+            "otherChests": 0,
+            "fillScore": 203400,
+            "color": "dark-purple"
+        },
+        "MASTER_SKULL_TIER_5": {
+            "name": "Master Skull - Tier 5",
+            "mainChest": 0.00177,
+            "otherChests": 0,
+            "fillScore": 169500,
+            "color": "blue"
+        },
+        "FIFTH_MASTER_STAR": {
+            "name": "Fifth Master Star",
+            "mainChest": 0.002212,
+            "otherChests": 0.005,
+            "fillScore": 135600,
+            "color": "dark-purple"
+        },
+        "NECRON_HANDLE": {
+            "name": "Necron's Handle",
+            "mainChest": 0.001106,
+            "otherChests": 0,
+            "fillScore": 271110,
+            "color": "dark-purple"
+        },
+        "IMPLOSION_SCROLL": {
+            "name": "Implosion",
+            "mainChest": 0.001032,
+            "otherChests": 0,
+            "fillScore": 290571,
+            "color": "dark-purple"
+        },
+        "SHADOW_WARP_SCROLL": {
+            "name": "Shadow Warp",
+            "mainChest": 0.001032,
+            "otherChests": 0,
+            "fillScore": 290571,
+            "color": "dark-purple"
+        },
+        "WITHER_SHIELD_SCROLL": {
+            "name": "Wither Shield",
+            "mainChest": 0.001032,
+            "otherChests": 0,
+            "fillScore": 290571,
+            "color": "dark-purple"
+        },
+        "AUTO_RECOMBOBULATOR": {
+            "name": "Auto Recombobulator",
+            "mainChest": 0.0059,
+            "otherChests": 0,
+            "fillScore": 50850,
+            "color": "gold"
+        },
+        "WITHER_HELMET": {
+            "name": "Wither Helmet",
+            "mainChest": 0.035398,
+            "otherChests": 0.0639,
+            "fillScore": 8475,
+            "color": "gold"
+        },
+        "WITHER_CHESTPLATE": {
+            "name": "Wither Chestplate",
+            "mainChest": 0.0059,
+            "otherChests": 0.005,
+            "fillScore": 50850,
+            "color": "gold"
+        },
+        "WITHER_LEGGINGS": {
+            "name": "Wither Leggings",
+            "mainChest": 0.023599,
+            "otherChests": 0.032,
+            "fillScore": 12712,
+            "color": "gold"
+        },
+        "WITHER_BOOTS": {
+            "name": "Wither Boots",
+            "mainChest": 0.035398,
+            "otherChests": 0.1643,
+            "fillScore": 8475,
+            "color": "gold"
+        },
+        "MAXOR_THE_FISH": {
+            "name": "Maxor the Fish",
+            "mainChest": 0.000369,
+            "otherChests": 0,
+            "fillScore": 813600,
+            "color": "red"
+        },
+        "STORM_THE_FISH": {
+            "name": "Storm the Fish",
+            "mainChest": 0.000369,
+            "otherChests": 0,
+            "fillScore": 813600,
+            "color": "red"
+        },
+        "GOLDOR_THE_FISH": {
+            "name": "Goldor the Fish",
+            "mainChest": 0.000369,
+            "otherChests": 0,
+            "fillScore": 813600,
+            "color": "red"
+        }
+    }
 }
