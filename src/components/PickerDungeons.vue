@@ -11,9 +11,9 @@
                         <option value="f7">F7</option>
                     </optgroup>
                     <optgroup label="Master Mode">
-                        <option value="m4" disabled>M4</option>
-                        <option value="m5" disabled>M5</option>
-                        <option value="m6" disabled>M6</option>
+                        <option value="m4">M4</option>
+                        <option value="m5">M5</option>
+                        <option value="m6">M6</option>
                         <option value="m7">M7</option>
                     </optgroup>
                 </select>
@@ -25,7 +25,7 @@
         <label class="row">
             <span>Item</span>
             <SelectWrapper>
-                <select v-model="item" :class="itemColorClass(item)">
+                <select v-model="item" :class="itemColorClass(item)" class="extra-wide">
                     <option :value="null" disabled>Select an option...</option>
                     <option v-for="item in Object.keys(data[floor])" :value="item" :class="itemColorClass(item)">{{ data[floor][item].name }}</option>
                 </select>
@@ -45,7 +45,20 @@
         </label>
     </Panel>
 
-    <Results v-if="probabilityArray && successes"/>
+    <Results v-if="probabilityArray && successes">
+        <Panel color="blue">
+            <span>The real world is complicated, so this mode makes a few assumptions:</span>
+            <ul>
+                <li v-if="rngMeterUsed">The RNG meter has existed since before you started running the floor</li>
+                <li>You have 10 Boss Luck and a Treasure Artifact <span class="inline-note">(note that this does not affect all items)</span></li>
+            </ul>
+        </Panel>
+        <Panel color="yellow" v-if="numCorrectnessWarning">
+            The drop chances on the wiki disagree with the RNG meter. Because this item can be obtained from
+            multiple chests, some of the probabilities come from the wiki and not the RNG meter menu.
+            Therefore, the result may be <span class="underline">inaccurate</span>.
+        </Panel>
+    </Results>
 </template>
 
 <script setup lang="ts">
@@ -72,6 +85,10 @@ function itemColorClass(item: string | null) {
     if (!floor.value || !item || data[floor.value][item] == undefined) return { "t-gray": true };
     return { [`t-${data[floor.value][item].color}`]: true }
 }
+
+const numCorrectnessWarning = computed(() => {
+    return floor.value && item.value && data[floor.value][item.value] && data[floor.value][item.value].otherChests > 0
+});
 
 // set the background
 watchEffect(() => {
