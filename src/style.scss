@@ -123,6 +123,10 @@ a.link-button {
     color: var(--light-purple);
 }
 
+ul {
+    list-style-type: square;
+}
+
 .indent {
     margin-left: 2ch;
     color: var(--gray);
@@ -132,6 +136,11 @@ a.link-button {
 .inline-note {
     color: var(--gray);
     font-style: italic;
+}
+
+.underline {
+    text-decoration: underline;
+    text-decoration-thickness: 1.5px;
 }
 
 input[type=text], input[type=number] {
@@ -245,7 +254,7 @@ input[type=number] {
 }
 
 .select-wrapper select.extra-wide {
-    width: 27ch;
+    width: 28ch;
 }
 
 /* this is outside .select-wrapper because of colour classes */

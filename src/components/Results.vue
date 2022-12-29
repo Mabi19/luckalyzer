@@ -5,6 +5,11 @@
     <Panel v-else-if="updateSeen">
         <div v-html="probabilityText"></div>
     </Panel>
+
+    <!-- extra content only to be shown when the result is visible -->
+    <template v-if="updateSeen">
+        <slot/>
+    </template>
 </template>
 
 <script setup lang="ts">
