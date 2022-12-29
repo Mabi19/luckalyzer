@@ -22,7 +22,14 @@ const props = withDefaults(defineProps<{
 
 .panel.black {
     /* background-color: black; */
-    color: white;
     border-image: url("../assets/panel-border-image.svg") 20% fill / 4px / 0px stretch;
+}
+
+.panel.blue {
+    border-image: url("../assets/info-border-image.svg") 20% fill / 2px / 0px stretch;
+}
+
+.panel.yellow {
+    border-image: url("../assets/warning-border-image.svg") 20% fill / 2px / 0px stretch;
 }
 </style>
