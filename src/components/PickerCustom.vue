@@ -1,6 +1,6 @@
 <template>
     <Panel>
-        <div class="heading">Probabilities</div>
+        <div class="heading t-gold">Probabilities</div>
         <div ref="probabilitiesContainer">
             <label v-for="input in inputs" class="row full-width">
                 <input type="text" inputmode="decimal" pattern="^(0|0\.[0-9]+|1)$" v-model="input.probability">
@@ -132,6 +132,5 @@ function deleteProbability(id: number) {
 
 .heading {
     font-weight: bold;
-    color: rgb(255, 170, 0);
 }
 </style>
