@@ -31,7 +31,7 @@
                 </select>
             </SelectWrapper>
         </label>
-        <label>
+        <label class="row">
             <span>RNG meter used?</span>
             <input type="checkbox" v-model="rngMeterUsed"/>
         </label>
@@ -53,11 +53,9 @@
         <Panel color="blue">
             <span>The real world is complicated, so this mode makes a few assumptions:</span>
             <ul>
+                <li>All runs are S+ with an average 303 score</li>
                 <li v-if="rngMeterUsed">The RNG meter has existed since before you started running the floor</li>
-                <li v-if="kismetFeathersUsed">
-                    You use a simple kismet strategy: always reroll unless you got your chosen drop
-                    <span v-if="rngMeterUsed" class="inline-note">(also, using kismets with the RNG meter will slightly degrade the accuracy)</span>
-                </li>
+                <li v-if="kismetFeathersUsed">You use a simple kismet strategy: always reroll unless you got your chosen drop</li>
                 <li>You have 10 Boss Luck and a Treasure Artifact <span class="inline-note">(note that this does not affect all items)</span></li>
             </ul>
         </Panel>
@@ -175,7 +173,8 @@ const probabilityArray = computed(() => {
             console.timeEnd("dungeon probability array");
             return result;
         } else {
-            const kismetBonus = kismetsUsed ? (attempts.value - successes.value) : 0;
+            // this is also not perfect, but again it's close enough
+            const kismetBonus = kismetsUsed ? (attempts.value - Math.floor(successes.value / 2)) : 0;
             return new Array(attempts.value + kismetBonus).fill(itemData.mainChest + itemData.otherChests);
         }
     }
