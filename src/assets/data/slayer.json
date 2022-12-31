@@ -1,5 +1,11 @@
 {
     "zombie": {
+        "BEHEADED_HORROR": {
+            "name": "Beheaded Horror",
+            "probability": { "num": 2, "den": 1233 },
+            "rngMeterBosses": 220,
+            "color": "dark-purple"
+        },
         "SCYTHE_BLADE": {
             "name": "Scythe Blade",
             "probability": { "num": 1, "den": 968 },
@@ -12,6 +18,24 @@
             "rngMeterBosses": 605,
             "color": "gold"
         },
+        "SMITE_VI": {
+            "name": "Smite VI",
+            "probability": { "num": 1, "den": 581 },
+            "rngMeterBosses": 41,
+            "color": "blue"
+        },
+        "SMITE_VII": {
+            "name": "Smite VII",
+            "probability": { "num": 7, "den": 14527 },
+            "rngMeterBosses": 692,
+            "color": "dark-purple"
+        },
+        "SNAKE_RUNE": {
+            "name": "◆ Snake Rune I",
+            "probability": { "num": 20, "den": 14527 },
+            "rngMeterBosses": 220,
+            "color": "gold"
+        },
         "WARDEN_HEART": {
             "name": "Warden Heart",
             "probability": { "num": 2, "den": 14527 },
@@ -20,6 +44,12 @@
         }
     },
     "spider": {
+        "BANE_OF_ARTHROPODS_VI": {
+            "name": "Bane of Arthropods VI",
+            "probability": { "num": 5, "den": 601 },
+            "rngMeterBosses": 120,
+            "color": "blue"
+        },
         "DIGESTED_MOSQUITO": {
             "name": "Digested Mosquito",
             "probability": { "num": 1, "den": 1717 },
