@@ -24,7 +24,7 @@
         "SHADOW_ASSASSIN_HELMET": {
             "name": "Shadow Assassin Helmet",
             "mainChest": 0.028902,
-            "otherChests": 0.049,
+            "otherChests": 0.052,
             "fillScore": 10380,
             "color": "dark-purple"
         },
@@ -45,7 +45,7 @@
         "SHADOW_ASSASSIN_BOOTS": {
             "name": "Shadow Assassin Boots",
             "mainChest": 0.043353,
-            "otherChests": 0.0844,
+            "otherChests": 0.0837,
             "fillScore": 6920,
             "color": "dark-purple"
         }
@@ -103,7 +103,7 @@
         "SUMMONING_RING": {
             "name": "Summoning Ring",
             "mainChest": 0.003664,
-            "otherChests": 0,
+            "otherChests": 0.0022,
             "fillScore": 81870,
             "color": "blue"
         }
@@ -147,7 +147,7 @@
         "WITHER_HELMET": {
             "name": "Wither Helmet",
             "mainChest": 0.035585,
-            "otherChests": 0.0535,
+            "otherChests": 0.0499,
             "fillScore": 8430,
             "color": "gold"
         },
@@ -168,7 +168,7 @@
         "WITHER_BOOTS": {
             "name": "Wither Boots",
             "mainChest": 0.035585,
-            "otherChests": 0.2139,
+            "otherChests": 0.1452,
             "fillScore": 8430,
             "color": "gold"
         },
@@ -207,7 +207,7 @@
             "mainChest": 0.027778,
             "otherChests": 0,
             "fillScore": 10800,
-            "color": "dark-pruple"
+            "color": "dark-purple"
         },
         "SPIRIT_SWORD": {
             "name": "Spirit Sword",
@@ -233,7 +233,7 @@
         "SPIRIT_PET": {
             "name": "Spirit Pet",
             "mainChest": 0.013889,
-            "otherChests": 0.0149,
+            "otherChests": 0.015,
             "fillScore": 21600,
             "color": "gold"
         },
@@ -349,7 +349,7 @@
         "NECROMANCER_LORD_HELMET": {
             "name": "Necromancer Lord Helmet",
             "mainChest": 0.014551,
-            "otherChests": 0.0316,
+            "otherChests": 0.0314,
             "fillScore": 20617,
             "color": "gold"
         },
@@ -456,7 +456,7 @@
         "WITHER_HELMET": {
             "name": "Wither Helmet",
             "mainChest": 0.035398,
-            "otherChests": 0.0639,
+            "otherChests": 0.064,
             "fillScore": 8475,
             "color": "gold"
         },
@@ -470,14 +470,14 @@
         "WITHER_LEGGINGS": {
             "name": "Wither Leggings",
             "mainChest": 0.023599,
-            "otherChests": 0.032,
+            "otherChests": 0.0314,
             "fillScore": 12712,
             "color": "gold"
         },
         "WITHER_BOOTS": {
             "name": "Wither Boots",
             "mainChest": 0.035398,
-            "otherChests": 0.1643,
+            "otherChests": 0.1644,
             "fillScore": 8475,
             "color": "gold"
         },

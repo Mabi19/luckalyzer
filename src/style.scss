@@ -94,8 +94,8 @@ label.row {
     display: block;
 }
 
-label.row * + * {
-    margin-left: 8px;
+label.row *:not(:last-child) {
+    margin-right: 8px;
 }
 
 hr {

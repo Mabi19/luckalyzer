@@ -1,5 +1,11 @@
 {
     "zombie": {
+        "BEHEADED_HORROR": {
+            "name": "Beheaded Horror",
+            "probability": { "num": 2, "den": 1233 },
+            "rngMeterBosses": 220,
+            "color": "dark-purple"
+        },
         "SCYTHE_BLADE": {
             "name": "Scythe Blade",
             "probability": { "num": 1, "den": 968 },
@@ -12,6 +18,24 @@
             "rngMeterBosses": 605,
             "color": "gold"
         },
+        "SMITE_VI": {
+            "name": "Smite VI",
+            "probability": { "num": 1, "den": 581 },
+            "rngMeterBosses": 41,
+            "color": "blue"
+        },
+        "SMITE_VII": {
+            "name": "Smite VII",
+            "probability": { "num": 7, "den": 14527 },
+            "rngMeterBosses": 692,
+            "color": "dark-purple"
+        },
+        "SNAKE_RUNE": {
+            "name": "◆ Snake Rune I",
+            "probability": { "num": 20, "den": 14527 },
+            "rngMeterBosses": 220,
+            "color": "gold"
+        },
         "WARDEN_HEART": {
             "name": "Warden Heart",
             "probability": { "num": 2, "den": 14527 },
@@ -20,23 +44,32 @@
         }
     },
     "spider": {
+        "BANE_OF_ARTHROPODS_VI": {
+            "name": "Bane of Arthropods VI",
+            "probability": { "num": 5, "den": 601 },
+            "rngMeterBosses": 120,
+            "color": "blue"
+        },
         "DIGESTED_MOSQUITO": {
             "name": "Digested Mosquito",
             "probability": { "num": 1, "den": 1717 },
             "rngMeterBosses": 1717,
-            "color": "gold"
+            "color": "gold",
+            "level": 7
         },
         "FLY_SWATTER": {
             "name": "Fly Swatter",
             "probability": { "num": 1, "den": 601 },
             "rngMeterBosses": 601,
-            "color": "dark-purple"
+            "color": "dark-purple",
+            "level": 5
         },
         "TARANTULA_TALISMAN": {
             "name": "Tarantula Talisman",
             "probability": { "num": 1, "den": 601 },
             "rngMeterBosses": 601,
-            "color": "dark-purple"
+            "color": "dark-purple",
+            "level": 6
         }
     },
     "wolf": {
@@ -44,13 +77,166 @@
             "name": "◆ Couture Rune I",
             "probability": { "num": 1, "den": 412 },
             "rngMeterBosses": 439,
-            "color": "gold"
+            "color": "gold",
+            "level": 6
+        },
+        "CRITICAL_VI": {
+            "name": "Critical VI",
+            "probability": { "num": 4, "den": 493 },
+            "rngMeterBosses": 123,
+            "color": "blue",
+            "level": 4
+        },
+        "FURBALL": {
+            "name": "Furball",
+            "probability": { "num": 8, "den": 493 },
+            "rngMeterBosses": 61,
+            "color": "blue",
+            "level": 4
+        },
+        "GRIZZLY_BAIT": {
+            "name": "Grizzly Bait",
+            "probability": { "num": 1, "den": 1761 },
+            "rngMeterBosses": 1761,
+            "color": "blue",
+            "level": 7
+        },
+        "OVERFLUX_CAPACITOR": {
+            "name": "Overflux Capacitor",
+            "probability": { "num": 5, "den": 12327 },
+            "rngMeterBosses": 2465,
+            "color": "dark-purple",
+            "level": 7
         },
         "RED_CLAW_EGG": {
             "name": "Red Claw Egg",
             "probability": { "num": 1, "den": 822 },
             "rngMeterBosses": 821,
-            "color": "dark-purple"
+            "color": "dark-purple",
+            "level": 5
+        }
+    },
+    "enderman": {
+        "ENCHANT_RUNE": {
+            "name": "◆ Enchant Rune I",
+            "probability": { "num": 7, "den": 14176 },
+            "rngMeterBosses": 2157,
+            "color": "gold",
+            "level": 7
+        },
+        "END_RUNE": {
+            "name": "◆ End Rune I",
+            "probability": { "num": 1, "den": 143 },
+            "rngMeterBosses": 151,
+            "color": "dark-purple",
+            "level": 5
+        },
+        "ENDER_SLAYER_VII": {
+            "name": "Ender Slayer VII",
+            "probability": { "num": 1, "den": 14169 },
+            "rngMeterBosses": 7085,
+            "color": "dark-purple",
+            "level": 7
+        },
+        "ETHERWARP_MERGER": {
+            "name": "Etherwarp Merger",
+            "probability": { "num": 7, "den": 1653 },
+            "rngMeterBosses": 236,
+            "color": "dark-purple",
+            "level": 7
+        },
+        "EXCEEDINGLY_RARE_ENDER_ARTIFACT_UPGRADER": {
+            "name": "Ender Artifact Upgrader",
+            "probability": { "num": 4, "den": 14169 },
+            "rngMeterBosses": 3542,
+            "color": "gold",
+            "level": 6
+        },
+        "HANDY_BLOOD_CHALICE": {
+            "name": "Handy Blood Chalice",
+            "probability": { "num": 4, "den": 2267 },
+            "rngMeterBosses": 567,
+            "color": "white",
+            "level": 5
+        },
+        "JUDGEMENT_CORE": {
+            "name": "Judgement Core",
+            "probability": { "num": 8, "den": 14169 },
+            "rngMeterBosses": 1771,
+            "color": "gold",
+            "level": 7
+        },
+        "POCKET_ESPRESSO_MACHINE": {
+            "name": "Pocket Espresso Machine",
+            "probability": { "num": 13, "den": 3349 },
+            "rngMeterBosses": 258,
+            "color": "white",
+            "level": 4
+        },
+        "SINFUL_DICE": {
+            "name": "Sinful Dice",
+            "probability": { "num": 1, "den": 218 },
+            "rngMeterBosses": 218,
+            "color": "dark-purple",
+            "level": 4
+        },
+        "VOID_CONQUEROR_ENDERMAN_SKIN": {
+            "name": "Void Conqueror Enderman Skin",
+            "probability": { "num": 3, "den": 1702 },
+            "rngMeterBosses": 604,
+            "color": "dark-purple",
+            "level": 7
+        }
+    },
+    "blaze": {
+        "ARCHFIEND_DICE": {
+            "name": "Archfiend Dice",
+            "probability": { "num": 5, "den": 492 },
+            "rngMeterBosses": 93,
+            "color": "dark-purple",
+            "level": 4
+        },
+        "DUPLEX_I": {
+            "name": "Duplex I",
+            "probability": { "num": 4, "den": 225 },
+            "rngMeterBosses": 57,
+            "color": "white",
+            "level": 6
+        },
+        "FIERY_BURST_RUNE": {
+            "name": "◆ Fiery Burst Rune I",
+            "probability": { "num": 1, "den": 493 },
+            "rngMeterBosses": 506,
+            "color": "gold",
+            "level": 5
+        },
+        "FIRE_ASPECT_III": {
+            "name": "Fire Aspect III",
+            "probability": { "num": 4, "den": 315 },
+            "rngMeterBosses": 79,
+            "color": "white",
+            "level": 5
+        },
+        "HIGH_CLASS_ARCHFIEND_DICE": {
+            "name": "High Class Archfiend Dice",
+            "probability": { "num": 3, "den": 1184 },
+            "rngMeterBosses": 404,
+            "color": "gold",
+            "level": 7
+        },
+        "SUBZERO_INVERTER": {
+            "name": "Subzero Inverter",
+            "probability": { "num": 8, "den": 9263 },
+            "rngMeterBosses": 1158,
+            "color": "gold",
+            "level": 7
+        },
+        "WILSON_ENGINEERING_PLANS": {
+            "name": "Wilson's Enginnering Plans",
+            "probability": { "num": 8, "den": 9263 },
+            "rngMeterBosses": 1158,
+            "color": "gold",
+            "level": 7
         }
     }
 }

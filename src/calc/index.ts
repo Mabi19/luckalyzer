@@ -36,7 +36,9 @@ function updateWorkStatus() {
 
         const work = workQueue[0];
         // Slayer work is always long (due to it being a simulation)
-        if (work.type == "slayer") return true;
+        if (work.type == "slayer") {
+            return work.successes != 1;
+        }
         if (work.type == "poibin") {
             return work._len > 1500;
         }

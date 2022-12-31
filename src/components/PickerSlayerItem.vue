@@ -1,8 +1,5 @@
 <template>
-    <Panel v-if="slayerType == 'enderman' || slayerType == 'blaze'">
-        <span>This boss will be implemented when someone gives me its RNG meter numbers.</span>
-    </Panel>
-    <Panel v-if="slayerType && !(slayerType == 'enderman' || slayerType == 'blaze')">
+    <Panel v-if="slayerType">
         <label class="row">
             <span>Item</span>
             <SelectWrapper>
@@ -32,6 +29,9 @@
             <span>Bosses slain</span>
             <input type="number" v-model="attempts" min="1"/>
         </label>
+        <Panel color="blue" v-if="minLevel">
+            Make sure to exclude bosses slain before level {{ minLevel }}!
+        </Panel>
         <label class="row">
             <span>Selected item drops</span>
             <span class="inline-note" v-if="rngMeterUsed">(including guaranteed drops from completing the RNG meter)</span>
@@ -39,7 +39,16 @@
         </label>
     </Panel>
 
-    <Results v-if="isValid"/>
+    <Results v-if="isValid">
+        <Panel color="blue">
+            The real world is complicated, so this mode makes a few assumptions:
+            <ul>
+                <li>All bosses are T{{ slayerType == "zombie" ? "5" : "4" }}</li>
+                <li v-if="rngMeterUsed">The RNG meter was revamped before you started killing the boss</li>
+                <li>All bosses are killed with the same Aatrox perks active</li>
+            </ul>
+        </Panel>
+    </Results>
 </template>
 
 <script setup lang="ts">
@@ -51,7 +60,7 @@ import { ref, computed, watchEffect, watch } from "vue";
 import { poibinUpdate, slayerUpdate } from "../calc";
 
 type ProbabilitySpecifier = { num: number, den: number };
-const data = untypedData as Record<string, Record<string, { name: string, probability: ProbabilitySpecifier, rngMeterBosses: number, color: string }>>;
+const data = untypedData as Record<string, Record<string, { name: string, probability: ProbabilitySpecifier, rngMeterBosses: number, color: string, level?: number }>>;
 
 const item = ref<string | null>(null);
 const aatroxPathfinder = ref(false);
@@ -69,6 +78,11 @@ function itemColorClass(item: string | null) {
 const props = defineProps<{
     slayerType: string
 }>();
+
+const minLevel = computed(() => {
+    if (!item.value) return null;
+    return data[props.slayerType][item.value]?.level ?? null;
+});
 
 // reset everything when the slayer boss changes
 watch(() => props.slayerType, () => {

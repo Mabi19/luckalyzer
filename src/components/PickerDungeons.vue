@@ -31,9 +31,13 @@
                 </select>
             </SelectWrapper>
         </label>
-        <label>
+        <label class="row">
             <span>RNG meter used?</span>
             <input type="checkbox" v-model="rngMeterUsed"/>
+        </label>
+        <label class="row">
+            <span>Kismet Feathers used?</span>
+            <input type="checkbox" v-model="kismetFeathersUsed"/>
         </label>
         <label class="row">
             <span>Runs</span>
@@ -49,7 +53,9 @@
         <Panel color="blue">
             <span>The real world is complicated, so this mode makes a few assumptions:</span>
             <ul>
+                <li>All runs are S+ with an average 303 score</li>
                 <li v-if="rngMeterUsed">The RNG meter has existed since before you started running the floor</li>
+                <li v-if="kismetFeathersUsed">You use a simple kismet strategy: always reroll unless you got your chosen drop</li>
                 <li>You have 10 Boss Luck and a Treasure Artifact <span class="inline-note">(note that this does not affect all items)</span></li>
             </ul>
         </Panel>
@@ -78,6 +84,7 @@ const data = untypedData as Record<string, Record<string, { name: string, mainCh
 const floor = ref<string | null>(null);
 const item = ref<string | null>(null);
 const rngMeterUsed = ref(false);
+const kismetFeathersUsed = ref(false);
 const attempts = ref<number | null>(null);
 const successes = ref<number | null>(null);
 
@@ -136,6 +143,8 @@ const probabilityArray = computed(() => {
         const itemData = data[floor.value][item.value];
         if (!itemData) return null;
 
+        const kismetsUsed = kismetFeathersUsed.value;
+
         if (rngMeterUsed.value) {
             console.time("dungeon probability array");
             const baseChance = itemData.mainChest;
@@ -146,7 +155,14 @@ const probabilityArray = computed(() => {
             let currentScore = 0;
 
             for (let i = 0; i < attempts.value; i++) {
-                result.push(baseChance * (1 + 2 * currentScore / fillScore) + extraChance);
+                const prob = baseChance * (1 + 2 * currentScore / fillScore) + extraChance;
+                result.push(prob);
+                if (kismetsUsed) {
+                    // This is not perfect, but it's the best way I found to simulate kismets
+                    // (it skews the result towards the mean, but for rare drops it should be so little
+                    // that it basically doesn't matter)
+                    result.push(prob * (1 - prob));
+                }
 
                 currentScore += SCORE_PER_RUN;
                 if (currentScore >= fillScore) {
@@ -157,7 +173,9 @@ const probabilityArray = computed(() => {
             console.timeEnd("dungeon probability array");
             return result;
         } else {
-            return new Array(attempts.value).fill(itemData.mainChest + itemData.otherChests);
+            // this is also not perfect, but again it's close enough
+            const kismetBonus = kismetsUsed ? (attempts.value - Math.floor(successes.value / 2)) : 0;
+            return new Array(attempts.value + kismetBonus).fill(itemData.mainChest + itemData.otherChests);
         }
     }
 });
