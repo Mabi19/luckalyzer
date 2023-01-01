@@ -2,15 +2,12 @@
     <Panel>
         <label class="row">
             <span>Mode</span>
-            <SelectWrapper>
-                <select v-model="selected">
-                    <option :value="null" disabled>Select an option...</option>
-                    <option value="dungeons">Dungeons</option>
-                    <option value="experiments">Experiments</option>
-                    <option value="slayer">Slayer</option>
-                    <option value="custom">Custom</option>
-                </select>
-            </SelectWrapper>
+            <AppSelect v-model="selected" :options="[
+                { id: 'dungeons', label: 'Dungeons' },
+                { id: 'experiments', label: 'Experiments' },
+                { id: 'slayer', label: 'Slayer' },
+                { id: 'custom', label: 'Custom' },
+            ]"/>
         </label>
     </Panel>
 
@@ -27,7 +24,7 @@ import PickerCustom from "./PickerCustom.vue";
 import PickerDungeons from "./PickerDungeons.vue";
 import PickerSlayerBoss from "./PickerSlayerBoss.vue";
 import Panel from "./Panel.vue";
-import SelectWrapper from "./SelectWrapper.vue";
+import AppSelect from "./AppSelect.vue";
 
 const selected = ref<string | null>(null);
 </script>

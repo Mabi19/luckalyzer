@@ -2,12 +2,7 @@
     <Panel v-if="slayerType">
         <label class="row">
             <span>Item</span>
-            <SelectWrapper>
-                <select v-model="item" :class="itemColorClass(item)" class="extra-wide">
-                    <option :value="null" disabled>Select an option...</option>
-                    <option v-for="item in Object.keys(data[slayerType])" :value="item" :class="itemColorClass(item)">{{ data[slayerType][item].name }}</option>
-                </select>
-            </SelectWrapper>
+            <AppSelect v-model="item" class="extra-wide" :options="itemSelectorOptions"/>
         </label>
         <label class="row">
             <span>Aatrox's Pathfinder? <span class="inline-note">(+20% drop chance)</span></span>
@@ -53,7 +48,6 @@
 
 <script setup lang="ts">
 import Panel from "./Panel.vue";
-import SelectWrapper from "./SelectWrapper.vue";
 import Results from "./Results.vue";
 import untypedData from "../assets/data/slayer.json";
 import { ref, computed, watchEffect, watch } from "vue";
@@ -70,10 +64,14 @@ const magicFind = ref<number | null>(null);
 const attempts = ref<number | null>(null);
 const successes = ref<number | null>(null);
 
-function itemColorClass(item: string | null) {
-    if (!props.slayerType || !item || data[props.slayerType][item] == undefined) return { "t-gray": true };
-    return { [`t-${data[props.slayerType][item].color}`]: true }
-}
+const itemSelectorOptions = computed(() => {
+    const items = data[props.slayerType];
+    return Object.entries(items).map(([id, value]) => ({
+        id,
+        label: value.name,
+        color: value.color,
+    }));
+});
 
 const props = defineProps<{
     slayerType: string

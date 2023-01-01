@@ -2,16 +2,13 @@
     <Panel>
         <label class="row">
             <span>Boss</span>
-            <SelectWrapper>
-                <select v-model="slayerType" class="extra-wide">
-                    <option :value="null" disabled>Select an option...</option>
-                    <option value="zombie">Atoned Horror (T5)</option>
-                    <option value="spider">Tarantula Broodfather (T4)</option>
-                    <option value="wolf">Sven Packmaster (T4)</option>
-                    <option value="enderman">Voidgloom Seraph (T4)</option>
-                    <option value="blaze">Inferno Demonlord (T4)</option>
-                </select>
-            </SelectWrapper>
+            <AppSelect v-model="slayerType" class="extra-wide" :options="[
+                { id: 'zombie', label: 'Atoned Horror (T5)' },
+                { id: 'spider', label: 'Tarantula Broodfather (T4)' },
+                { id: 'wolf', label: 'Sven Packmaster (T4)' },
+                { id: 'enderman', label: 'Voidgloom Seraph (T4)' },
+                { id: 'blaze', label: 'Inferno Demonlord (T4)' },
+            ]"/>
         </label>
     </Panel>
 
@@ -22,7 +19,7 @@
 import { ref, watchEffect } from "vue";
 import { Background, currentBackground } from "../Background";
 import Panel from "./Panel.vue";
-import SelectWrapper from "./SelectWrapper.vue";
+import AppSelect from "./AppSelect.vue";
 import PickerSlayerItem from "./PickerSlayerItem.vue";
 
 const slayerType = ref<string | null>(null);
