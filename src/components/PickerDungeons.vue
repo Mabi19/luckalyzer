@@ -2,34 +2,32 @@
     <Panel>
         <label class="row">
             <span>Floor</span>
-            <SelectWrapper>
-                <select v-model="floor">
-                    <option :value="null" disabled>Select an option...</option>
-                    <optgroup label="Normal Mode">
-                        <option value="f5">F5</option>
-                        <option value="f6">F6</option>
-                        <option value="f7">F7</option>
-                    </optgroup>
-                    <optgroup label="Master Mode">
-                        <option value="m4">M4</option>
-                        <option value="m5">M5</option>
-                        <option value="m6">M6</option>
-                        <option value="m7">M7</option>
-                    </optgroup>
-                </select>
-            </SelectWrapper>
+            <AppSelect v-model="floor" :options="[
+                {
+                    name: 'Normal Mode',
+                    options: [
+                        { id: 'f5', label: 'F5' },
+                        { id: 'f6', label: 'F6' },
+                        { id: 'f7', label: 'F7' },
+                    ]
+                },
+                {
+                    name: 'Master Mode',
+                    options: [
+                        { id: 'm4', label: 'M4' },
+                        { id: 'm5', label: 'M5' },
+                        { id: 'm6', label: 'M6' },
+                        { id: 'm7', label: 'M7' },
+                    ]
+                },
+            ]"/>
         </label>
     </Panel>
 
     <Panel v-if="floor">
         <label class="row">
             <span>Item</span>
-            <SelectWrapper>
-                <select v-model="item" :class="itemColorClass(item)" class="extra-wide">
-                    <option :value="null" disabled>Select an option...</option>
-                    <option v-for="item in Object.keys(data[floor])" :value="item" :class="itemColorClass(item)">{{ data[floor][item].name }}</option>
-                </select>
-            </SelectWrapper>
+            <AppSelect v-model="item" class="extra-wide" :options="itemSelectorOptions" />
         </label>
         <label class="row">
             <span>RNG meter used?</span>
@@ -69,11 +67,11 @@
 
 <script setup lang="ts">
 import { ref, watchEffect, watch, computed } from "vue";
-import { values, isWorking, poibinUpdate } from "../calc";
+import { poibinUpdate } from "../calc";
 import { currentBackground } from "../Background";
 import Panel from "./Panel.vue";
 import Results from "./Results.vue";
-import SelectWrapper from "./SelectWrapper.vue";
+import AppSelect from "./AppSelect.vue";
 import untypedData from "../assets/data/dungeons.json";
 
 const SCORE_PER_RUN = 303;
@@ -88,10 +86,15 @@ const kismetFeathersUsed = ref(false);
 const attempts = ref<number | null>(null);
 const successes = ref<number | null>(null);
 
-function itemColorClass(item: string | null) {
-    if (!floor.value || !item || data[floor.value][item] == undefined) return { "t-gray": true };
-    return { [`t-${data[floor.value][item].color}`]: true }
-}
+const itemSelectorOptions = computed(() => {
+    if (!floor.value) return [];
+    const items = data[floor.value];
+    return Object.entries(items).map(([id, value]) => ({
+        id,
+        label: value.name,
+        color: value.color,
+    }));
+});
 
 const numCorrectnessWarning = computed(() => {
     return floor.value && item.value && data[floor.value][item.value] && data[floor.value][item.value].otherChests > 0
