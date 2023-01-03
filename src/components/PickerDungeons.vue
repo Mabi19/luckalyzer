@@ -169,7 +169,6 @@ const probabilityArray = computed(() => {
 
                 currentScore += SCORE_PER_RUN;
                 if (currentScore >= fillScore) {
-                    console.log("rolling over");
                     currentScore = 0;
                 }
             }

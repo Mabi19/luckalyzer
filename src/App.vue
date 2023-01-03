@@ -28,7 +28,6 @@ const version = __APP_VERSION__;
 const aboutDialog = ref<InstanceType<typeof AboutDialog> | null>(null);
 
 function showAbout() {
-    console.log(aboutDialog.value);
     aboutDialog.value?.open();
 }
 
