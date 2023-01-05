@@ -158,13 +158,15 @@ const probabilityArray = computed(() => {
             let currentScore = 0;
 
             for (let i = 0; i < attempts.value; i++) {
-                const prob = baseChance * (1 + 2 * currentScore / fillScore) + extraChance;
+                const mainProb = baseChance * (1 + 2 * currentScore / fillScore);
+                const prob = mainProb + extraChance;
                 result.push(prob);
                 if (kismetsUsed) {
                     // This is not perfect, but it's the best way I found to simulate kismets
                     // (it skews the result towards the mean, but for rare drops it should be so little
                     // that it basically doesn't matter)
-                    result.push(prob * (1 - prob));
+                    // don't include the extra chance since only the main chest is kismeted for
+                    result.push(mainProb * (1 - mainProb));
                 }
 
                 currentScore += SCORE_PER_RUN;
