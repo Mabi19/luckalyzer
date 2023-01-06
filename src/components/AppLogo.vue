@@ -13,7 +13,15 @@
 import Panel from "./Panel.vue";
 import flavourTextData from "../assets/data/flavour-text.json";
 
-const flavourText = flavourTextData[Math.floor(Math.random() * flavourTextData.length)];
+function rollFlavourText() {
+    let index: number;
+    do {
+        index = Math.floor(Math.random() * flavourTextData.length);
+    } while (index == 9); // "This flavour text will never appear."
+    return index;
+}
+
+const flavourText = flavourTextData[rollFlavourText()];
 </script>
 
 <style scoped>
