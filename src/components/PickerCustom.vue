@@ -88,17 +88,13 @@ function addProbability(focusIndex: number) {
     inputs.value.push({ probability: "0.5", count: 1, id: nextID });
     nextID++;
     nextTick(() => {
-        console.log(probabilitiesContainer.value);
         (probabilitiesContainer.value?.lastElementChild?.childNodes[focusIndex] as HTMLInputElement).focus();
     });
 }
 
 function deleteProbability(id: number) {
-    console.log("deleting with id", id);
-    console.log(inputs.value);
     // this is not optimal (we know there's always only one) but whatever
     inputs.value = inputs.value.filter((el) => el.id != id);
-    console.log(inputs.value);
 }
 </script>
 

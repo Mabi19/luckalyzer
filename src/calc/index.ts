@@ -88,7 +88,6 @@ function allocateWork(work: WorkUnit) {
 export function poibinUpdate(probabilities: number[], successes: number) {
     // Check the inputs (the wasm function does not do that)
     if (!(Array.isArray(probabilities) && probabilities.every(val => typeof val == "number" && val >= 0.0 && val <= 1.0))) {
-        console.log(probabilities);
         throw new TypeError("probabilities must be an array of numbers");
     }
 
