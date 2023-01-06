@@ -1,0 +1,42 @@
+{
+    "DRAGON_HORN": {
+        "name": "Dragon Horn",
+        "probability": 0.3,
+        "affectedByEyesPlaced": false,
+        "superiorOnly": true,
+        "pet": false,
+        "color": "dark-purple"
+    },
+    "DRAGON_CLAW": {
+        "name": "Dragon Claw",
+        "probability": 0.02,
+        "affectedByEyesPlaced": true,
+        "superiorOnly": false,
+        "pet": false,
+        "color": "blue"
+    },
+    "EPIC_ENDER_DRAGON": {
+        "name": "Epic Ender Dragon Pet",
+        "probability": 0.0005,
+        "affectedByEyesPlaced": true,
+        "superiorOnly": false,
+        "pet": true,
+        "color": "dark-purple"
+    },
+    "LEGENDARY_ENDER_DRAGON": {
+        "name": "Legendary Ender Dragon Pet",
+        "probability": 0.0001,
+        "affectedByEyesPlaced": true,
+        "superiorOnly": false,
+        "pet": true,
+        "color": "gold"
+    },
+    "ASPECT_OF_THE_DRAGONS": {
+        "name": "Aspect of the Dragons",
+        "probability": 0.03,
+        "affectedByEyesPlaced": true,
+        "superiorOnly": false,
+        "pet": false,
+        "color": "gold"
+    }
+}
