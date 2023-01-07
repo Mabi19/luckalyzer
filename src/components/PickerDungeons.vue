@@ -54,13 +54,13 @@
                 <li>All runs are S+ with an average 303 score</li>
                 <li v-if="rngMeterUsed">The RNG meter has existed since before you started running the floor</li>
                 <li v-if="kismetFeathersUsed">You use a simple kismet strategy: always reroll unless you got your chosen drop</li>
-                <li>You have 10 Boss Luck and a Treasure Artifact <span class="inline-note">(note that this does not affect all items)</span></li>
+                <li>You have 5 Boss Luck and a Treasure Artifact <span class="inline-note">(note that this does not affect all items)</span></li>
             </ul>
         </Panel>
         <Panel color="yellow" v-if="numCorrectnessWarning">
             The drop chances on the wiki disagree with the RNG meter. Because this item can be obtained from
             multiple chests, some of the probabilities come from the wiki and not the RNG meter menu.
-            Therefore, the result may be <span class="underline">inaccurate</span>.
+            Therefore, the result <span class="underline">may be inaccurate</span>.
         </Panel>
     </Results>
 </template>
