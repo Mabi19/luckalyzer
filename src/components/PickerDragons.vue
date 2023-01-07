@@ -32,6 +32,7 @@
             <ul>
                 <li>You (or someone else who placed eyes) has the Dragon Piper perk</li>
                 <li>An average amount of dragons were Superior ({{ Math.round((attempts ?? 0) * 0.044) }} in this case)</li>
+                <li>You always get 452 or more Quality</li>
             </ul>
         </Panel>
     </Results>
