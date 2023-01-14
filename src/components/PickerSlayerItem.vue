@@ -49,6 +49,7 @@
 <script setup lang="ts">
 import Panel from "./Panel.vue";
 import Results from "./Results.vue";
+import AppSelect from "./AppSelect.vue";
 import untypedData from "../assets/data/slayer.json";
 import { ref, computed, watchEffect, watch } from "vue";
 import { poibinUpdate, slayerUpdate } from "../calc";
