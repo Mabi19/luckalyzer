@@ -5,10 +5,6 @@
             <AppSelect v-model="item" class="extra-wide" :options="itemSelectorOptions"/>
         </label>
         <label class="row">
-            <span>Aatrox's Pathfinder? <span class="inline-note">(+20% drop chance)</span></span>
-            <input type="checkbox" v-model="aatroxPathfinder"/>
-        </label>
-        <label class="row">
             <span>RNG meter used?</span>
             <input type="checkbox" v-model="rngMeterUsed"/>
         </label>
@@ -58,7 +54,6 @@ type ProbabilitySpecifier = { num: number, den: number };
 const data = untypedData as Record<string, Record<string, { name: string, probability: ProbabilitySpecifier, rngMeterBosses: number, color: string, level?: number }>>;
 
 const item = ref<string | null>(null);
-const aatroxPathfinder = ref(false);
 const rngMeterUsed = ref(false);
 const aatroxXPBuff = ref(false);
 const magicFind = ref<number | null>(null);
@@ -86,7 +81,6 @@ const minLevel = computed(() => {
 // reset everything when the slayer boss changes
 watch(() => props.slayerType, () => {
     item.value = null;
-    aatroxPathfinder.value = false;
     rngMeterUsed.value = false;
     aatroxXPBuff.value = false;
     magicFind.value = null;
@@ -113,16 +107,14 @@ watchEffect(() => {
             probability: itemData.probability,
             rngMeterBosses: itemData.rngMeterBosses,
             magicFind: magicFind.value!,
-            aatroxPathfinder: aatroxPathfinder.value,
             aatroxXPBuff: aatroxXPBuff.value,
             attempts: attempts.value!,
             successes: successes.value!,
         });
     } else {
-        const pathfinderBonus = aatroxPathfinder.value ? 1.2 : 1;
         const magicFindBonus = (magicFind.value! + 100) / 100;
         const baseChance = itemData.probability.num / itemData.probability.den;
-        const probabilityArray: number[] = new Array(attempts.value!).fill(baseChance * pathfinderBonus * magicFindBonus);
+        const probabilityArray: number[] = new Array(attempts.value!).fill(baseChance * magicFindBonus);
         poibinUpdate(probabilityArray, successes.value!);
     }
 });
