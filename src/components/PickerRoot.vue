@@ -6,6 +6,7 @@
                 { id: 'dragons', label: 'Dragons' },
                 { id: 'dungeons', label: 'Dungeons' },
                 { id: 'experiments', label: 'Experiments' },
+                { id: 'mythological', label: 'Mythological Ritual' },
                 { id: 'slayer', label: 'Slayer' },
                 { id: 'custom', label: 'Custom' },
             ]"/>
@@ -17,6 +18,7 @@
     <PickerDungeons v-if="selected == 'dungeons'"/>
     <PickerSlayerBoss v-if="selected == 'slayer'"/>
     <PickerDragons v-if="selected == 'dragons'"/>
+    <PickerMythological v-if="selected == 'mythological'"/>
 </template>
 
 <script setup lang="ts">
@@ -26,6 +28,7 @@ import PickerCustom from "./PickerCustom.vue";
 import PickerDungeons from "./PickerDungeons.vue";
 import PickerSlayerBoss from "./PickerSlayerBoss.vue";
 import PickerDragons from "./PickerDragons.vue";
+import PickerMythological from "./PickerMythological.vue";
 import Panel from "./Panel.vue";
 import AppSelect from "./AppSelect.vue";
 
