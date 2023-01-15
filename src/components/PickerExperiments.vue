@@ -19,13 +19,13 @@
         </label>
     </Panel>
 
-    <Results v-if="probabilityArray && successes"/>
+    <Results v-if="probabilityArray && successes != null"/>
 </template>
 
 <script setup lang="ts">
 import { ref, watchEffect, computed } from "vue";
-import { values, isWorking, poibinUpdate } from "../calc";
-import { Background, currentBackground } from "../Background";
+import { poibinUpdate } from "../calc";
+import { currentBackground } from "../Background";
 import Panel from "./Panel.vue";
 import Results from "./Results.vue";
 
@@ -38,7 +38,7 @@ const eman8 = ref(false);
 const eman8After = ref(0);
 
 const probabilityArray = computed(() => {
-    if (attempts.value && successes.value) {
+    if (attempts.value && successes.value != null) {
         const beforeEman8 = eman8.value ? eman8After.value : attempts.value;
         const afterEman8 = eman8.value ? attempts.value - eman8After.value : 0;
         return new Array(beforeEman8).fill(0.01).concat(new Array(afterEman8).fill(0.0115)) as number[];
@@ -49,14 +49,14 @@ const probabilityArray = computed(() => {
 
 // recompute when the probabilities change
 watchEffect(() => {
-    if (probabilityArray.value && successes.value && successes.value <= attempts.value!) {
+    if (probabilityArray.value && successes.value != null && successes.value <= attempts.value!) {
         poibinUpdate(probabilityArray.value, successes.value);
     }
 });
 
 // sync them so that successes or experiments obtained before eman 8 cannot be larger than attempts
 watchEffect(() => {
-    if (attempts.value && successes.value) {
+    if (attempts.value && successes.value != null) {
         if (successes.value > attempts.value) {
             successes.value = attempts.value;
         }

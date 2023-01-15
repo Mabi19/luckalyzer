@@ -96,7 +96,7 @@ watch(() => props.slayerType, () => {
 
 // check for validity
 const isValid = computed(() => {
-    return item.value && magicFind.value && attempts.value && successes.value &&
+    return item.value && magicFind.value != null && attempts.value && successes.value != null &&
     (magicFind.value >= 0 && magicFind.value <= 900) &&
     (successes.value <= attempts.value);
 });
