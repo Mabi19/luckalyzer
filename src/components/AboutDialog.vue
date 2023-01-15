@@ -4,11 +4,11 @@
             The Luckalyzer is a probability calculator for Hypixel SkyBlock.
         </p>
         <p>
-            Made by <CreditsPlayer ign="Mabi19" profile="Coconut"/>
-            with help from <CreditsPlayer ign="cslt" profile="Pomegranate"/>,
+            Made by <CreditsPlayer ign="Mabi19" profile="Coconut" uuid="4160f1a2-0fab-4041-b921-75340fc4d4d5"/>
+            with help from <CreditsPlayer ign="cslt" profile="Pomegranate" uuid="2152c072-2ee5-4c86-bf29-c57d067ce1c5"/>,
             giving countless opinions and the data I couldn't obtain myself,
             also <a href="https://redd.it/vilrsm">being RNG carried</a> which is what inspired me to create this in the first place,
-            and <CreditsPlayer ign="Zorbas05" profile="Banana"/>, who assisted with taking the Dungeon backgrounds.
+            and <CreditsPlayer ign="Zorbas05" profile="Banana" uuid="bcd1c9fe-198b-4fa9-ade7-b274bd622dd6"/>, who assisted with taking the Dungeon backgrounds.
 
         </p>
         <p>
