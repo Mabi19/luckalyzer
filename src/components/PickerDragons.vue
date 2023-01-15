@@ -18,7 +18,7 @@
         </label>
         <label class="row">
             <span>Dragons slain</span>
-            <input type="number" v-model="attempts" min="0"/>
+            <input type="number" v-model="attempts" min="1"/>
         </label>
         <label class="row">
             <span>Selected item drops</span>
@@ -26,7 +26,7 @@
         </label>
     </Panel>
 
-    <Results v-if="probabilityArray && successes">
+    <Results v-if="probabilityArray && successes != null">
         <Panel color="blue">
             <span>The real world is complicated, so this mode makes a few assumptions:</span>
             <ul>
@@ -67,7 +67,7 @@ const itemSelectorOptions = Object.entries(data)
     }));
 
 const probabilityArray = computed(() => {
-    if (item.value && magicFind.value && petLuck.value && eyesPlaced.value && attempts.value) {
+    if (item.value && magicFind.value != null && petLuck.value != null && eyesPlaced.value != null && attempts.value) {
         // 4.4% chance for a Superior Dragon with Dragon Piper
         const superiorDragons = Math.round(attempts.value * 0.044);
 
@@ -116,14 +116,14 @@ const maxSuccesses = computed(() => {
 
 // recompute when the probabilities change
 watchEffect(() => {
-    if (probabilityArray.value && successes.value && successes.value <= attempts.value!) {
+    if (probabilityArray.value && successes.value != null && successes.value <= attempts.value!) {
         poibinUpdate(probabilityArray.value, successes.value);
     }
 });
 
 // keep data in sync
 watchEffect(() => {
-    if (attempts.value && successes.value) {
+    if (attempts.value && successes.value != null) {
         if (successes.value > attempts.value) {
             successes.value = maxSuccesses.value!;
         }

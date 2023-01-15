@@ -47,7 +47,7 @@
         </label>
     </Panel>
 
-    <Results v-if="probabilityArray && successes">
+    <Results v-if="probabilityArray && successes != null">
         <Panel color="blue">
             <span>The real world is complicated, so this mode makes a few assumptions:</span>
             <ul>
@@ -140,7 +140,7 @@ watchEffect(() => {
 });
 
 const probabilityArray = computed(() => {
-    if (!floor.value || !item.value || !attempts.value || !successes.value || successes.value > attempts.value) {
+    if (!floor.value || !item.value || !attempts.value || successes.value == null || successes.value > attempts.value) {
         return null;
     } else {
         const itemData = data[floor.value][item.value];
@@ -192,7 +192,7 @@ watch(floor, () => {
     successes.value = null;
 });
 watchEffect(() => {
-    if (attempts.value && successes.value) {
+    if (attempts.value && successes.value != null) {
         if (successes.value > attempts.value) {
             successes.value = attempts.value;
         }
@@ -201,7 +201,7 @@ watchEffect(() => {
 
 // recompute when the probabilities change
 watchEffect(() => {
-    if (probabilityArray.value && successes.value && successes.value <= attempts.value!) {
+    if (probabilityArray.value && successes.value != null && successes.value <= attempts.value!) {
         poibinUpdate(probabilityArray.value, successes.value);
     }
 });

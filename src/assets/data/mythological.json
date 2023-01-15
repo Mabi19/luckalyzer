@@ -1,0 +1,20 @@
+{
+    "CHIMERA_I": {
+        "name": "Chimera I",
+        "color": "white",
+        "mob": "Minos Inquisitor",
+        "probability": 0.01
+    },
+    "DAEDALUS_STICK": {
+        "name": "Daedalus Stick",
+        "color": "gold",
+        "mob": "Minotaur",
+        "probability": 0.0008
+    },
+    "MINOS_RELIC": {
+        "name": "Minos Relic",
+        "color": "dark-purple",
+        "mob": "Minos Champion",
+        "probability": 0.0002
+    }
+}

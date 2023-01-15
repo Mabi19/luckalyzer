@@ -9,10 +9,11 @@
 const props = defineProps<{
     ign: string,
     profile?: string,
+    uuid?: string,
 }>();
 
 const imageURL = () => new URL(`../assets/heads/${props.ign}.png`, import.meta.url).href;
-const skycryptURL = () => `https://sky.shiiyu.moe/stats/${props.ign}/${props.profile}`;
+const skycryptURL = () => `https://sky.shiiyu.moe/stats/${props.uuid ?? props.ign}/${props.profile}`;
 const imageAlt = () => `${props.ign}'s Minecraft head`;
 
 </script>

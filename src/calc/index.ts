@@ -105,7 +105,6 @@ export function poibinUpdate(probabilities: number[], successes: number) {
 export interface SlayerOptions {
     probability: { num: number, den: number };
     magicFind: number;
-    aatroxPathfinder: boolean;
     aatroxXPBuff: boolean;
     rngMeterBosses: number;
     attempts: number;
@@ -113,8 +112,8 @@ export interface SlayerOptions {
 }
 
 export function slayerUpdate(opts: SlayerOptions) {
-    let pnum = opts.aatroxPathfinder ? opts.probability.num * 6 : opts.probability.num;
-    let pden = opts.aatroxPathfinder ? opts.probability.den * 5 : opts.probability.den;
+    let pnum = opts.probability.num;
+    let pden = opts.probability.den;
 
     // factor in Magic Find
     pnum *= 100 + opts.magicFind;

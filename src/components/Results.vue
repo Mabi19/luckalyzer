@@ -24,10 +24,12 @@ const updateSeen = ref(false);
 watch([values], () => updateSeen.value = true);
 
 function formatProbability(probability: number) {
+    let stringified = (probability * 100.0)
+        .toPrecision(3);
     // toPrecision() returns trailing zeroes
-    const stringified = (probability * 100.0)
-        .toPrecision(3)
-        .replace(/\.?0+$/, "");
+    if (stringified.indexOf(".") != -1) {
+        stringified = stringified.replace(/\.?0+$/, "");
+    }
     return `${stringified}%`;
 }
 

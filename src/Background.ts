@@ -1,6 +1,7 @@
 import { ref } from "vue";
 import GenericBg from "./assets/backgrounds/generic-b.webp";
 import DragonsBg from "./assets/backgrounds/dragons.webp";
+import MythologicalBg from "./assets/backgrounds/mythological.webp";
 import DungeonsGenericBg from "./assets/backgrounds/dungeons-generic.webp";
 import DungeonsF1Bg from "./assets/backgrounds/dungeons-f1.webp";
 import DungeonsF2Bg from "./assets/backgrounds/dungeons-f2.webp";
@@ -22,6 +23,7 @@ export type Background =
     "generic" |
     "dragons" |
     "experiments" |
+    "mythological" |
     "dungeons-generic" |
     "dungeons-f1" |
     "dungeons-f2" |
@@ -41,6 +43,8 @@ export type Background =
 export const imageURLs: Record<Background, string> = {
     "generic": GenericBg,
     "dragons": DragonsBg,
+    "experiments": ExperimentsBg,
+    "mythological": MythologicalBg,
     "dungeons-generic": DungeonsGenericBg,
     "dungeons-f1": DungeonsF1Bg,
     "dungeons-f2": DungeonsF2Bg,
@@ -50,7 +54,6 @@ export const imageURLs: Record<Background, string> = {
     "dungeons-f6": DungeonsF6Bg,
     "dungeons-f7": DungeonsF7Bg,
     "dungeons-m7": DungeonsM7Bg,
-    "experiments": ExperimentsBg,
     "generic-slayer": GenericSlayerBg,
     "zombie-slayer": ZombieSlayerBg,
     "spider-slayer": SpiderSlayerBg,
