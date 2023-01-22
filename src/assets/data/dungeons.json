@@ -171,27 +171,6 @@
             "otherChests": 0.1452,
             "fillScore": 8430,
             "color": "gold"
-        },
-        "MAXOR_THE_FISH": {
-            "name": "Maxor the Fish",
-            "mainChest": 0.000741,
-            "otherChests": 0,
-            "fillScore": 404670,
-            "color": "red"
-        },
-        "STORM_THE_FISH": {
-            "name": "Storm the Fish",
-            "mainChest": 0.000741,
-            "otherChests": 0,
-            "fillScore": 404670,
-            "color": "red"
-        },
-        "GOLDOR_THE_FISH": {
-            "name": "Goldor the Fish",
-            "mainChest": 0.000741,
-            "otherChests": 0,
-            "fillScore": 404670,
-            "color": "red"
         }
     },
     "m4": {
@@ -480,27 +459,6 @@
             "otherChests": 0.1644,
             "fillScore": 8475,
             "color": "gold"
-        },
-        "MAXOR_THE_FISH": {
-            "name": "Maxor the Fish",
-            "mainChest": 0.000369,
-            "otherChests": 0,
-            "fillScore": 813600,
-            "color": "red"
-        },
-        "STORM_THE_FISH": {
-            "name": "Storm the Fish",
-            "mainChest": 0.000369,
-            "otherChests": 0,
-            "fillScore": 813600,
-            "color": "red"
-        },
-        "GOLDOR_THE_FISH": {
-            "name": "Goldor the Fish",
-            "mainChest": 0.000369,
-            "otherChests": 0,
-            "fillScore": 813600,
-            "color": "red"
         }
     }
 }
