@@ -194,6 +194,7 @@ const probabilityArray = computed(() => {
 watch(floor, () => {
     item.value = null;
     rngMeterUsed.value = false;
+    kismetFeathersUsed.value = false;
     attempts.value = null;
     successes.value = null;
 });
