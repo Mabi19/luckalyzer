@@ -2,6 +2,7 @@
     <Modal title="About" :show="aboutShown" @close="aboutShown = false">
         <p>
             The Luckalyzer is a probability calculator for Hypixel SkyBlock.
+            <a href="https://hypixel.net/threads/the-luckalyzer-a-luck-calculator-for-skyblock.5258775/">Hypixel Forums Thread</a>
         </p>
         <p>
             Made by <CreditsPlayer ign="Mabi19" profile="Coconut" uuid="4160f1a2-0fab-4041-b921-75340fc4d4d5"/>
