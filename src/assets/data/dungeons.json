@@ -137,6 +137,13 @@
             "fillScore": 269780,
             "color": "dark-purple"
         },
+        "ANY_SCROLL": {
+            "name": "Any Necron's Blade Scroll",
+            "mainChest": 0.003336,
+            "otherChests": 0,
+            "fillScore": null,
+            "color": "dark-purple"
+        },
         "AUTO_RECOMBOBULATOR": {
             "name": "Auto Recombobulator",
             "mainChest": 0.005931,
@@ -423,6 +430,13 @@
             "mainChest": 0.001032,
             "otherChests": 0,
             "fillScore": 290571,
+            "color": "dark-purple"
+        },
+        "ANY_SCROLL": {
+            "name": "Any Necron's Blade Scroll",
+            "mainChest": 0.003096,
+            "otherChests": 0,
+            "fillScore": null,
             "color": "dark-purple"
         },
         "AUTO_RECOMBOBULATOR": {

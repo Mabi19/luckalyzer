@@ -29,7 +29,8 @@
             <span>Item</span>
             <AppSelect v-model="item" class="extra-wide" :options="itemSelectorOptions" />
         </label>
-        <label class="row">
+        <div class="inline-note" v-if="!rngMeterApplicable">The RNG meter does not apply for this option</div>
+        <label class="row" v-show="rngMeterApplicable">
             <span>RNG meter used?</span>
             <input type="checkbox" v-model="rngMeterUsed"/>
         </label>
@@ -77,7 +78,7 @@ import untypedData from "../assets/data/dungeons.json";
 const SCORE_PER_RUN = 303;
 
 type ProbabilitySpecifier = number;
-const data = untypedData as Record<string, Record<string, { name: string, mainChest: ProbabilitySpecifier, otherChests: ProbabilitySpecifier, fillScore: number, color: string }>>;
+const data = untypedData as Record<string, Record<string, { name: string, mainChest: ProbabilitySpecifier, otherChests: ProbabilitySpecifier, fillScore: number | null, color: string }>>;
 
 const floor = ref<string | null>(null);
 const item = ref<string | null>(null);
@@ -99,6 +100,11 @@ const itemSelectorOptions = computed(() => {
 const numCorrectnessWarning = computed(() => {
     return floor.value && item.value && data[floor.value][item.value] && data[floor.value][item.value].otherChests > 0
 });
+
+const rngMeterApplicable = computed(() => {
+    if (!floor.value || !item.value) return true;
+    return data[floor.value][item.value].fillScore != null;
+})
 
 // set the background
 watchEffect(() => {
@@ -148,7 +154,7 @@ const probabilityArray = computed(() => {
 
         const kismetsUsed = kismetFeathersUsed.value;
 
-        if (rngMeterUsed.value) {
+        if (itemData.fillScore && rngMeterUsed.value) {
             console.time("dungeon probability array");
             const baseChance = itemData.mainChest;
             const extraChance = itemData.otherChests;
@@ -188,6 +194,7 @@ const probabilityArray = computed(() => {
 watch(floor, () => {
     item.value = null;
     rngMeterUsed.value = false;
+    kismetFeathersUsed.value = false;
     attempts.value = null;
     successes.value = null;
 });

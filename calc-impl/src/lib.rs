@@ -2,12 +2,6 @@ use wasm_bindgen::prelude::*;
 use num_complex::Complex;
 use std::{f64::consts::PI, cmp::{Ordering, max}};
 
-// When the `wee_alloc` feature is enabled, use `wee_alloc` as the global allocator.
-// NOTE: `wee_alloc` has a memory leak that causes the performance to degrade a lot.
-#[cfg(feature = "wee_alloc")]
-#[global_allocator]
-static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
-
 #[wasm_bindgen]
 pub struct DistributionResult {
     pub pmf: f64,
