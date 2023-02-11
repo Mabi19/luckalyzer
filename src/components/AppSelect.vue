@@ -24,19 +24,7 @@ export default {
 
 <script setup lang="ts">
 import { computed } from 'vue';
-
-type BaseOption = {
-    id: string,
-    label: string,
-    color?: string,
-};
-
-type OptionGroup = {
-    name: string,
-    options: BaseOption[],
-}
-
-type Option = BaseOption | OptionGroup;
+import type { Option } from "../SelectBox";
 
 function colorClass(color?: string) {
     const className = "t-" + (color ?? props.defaultColor);

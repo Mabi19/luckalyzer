@@ -1,8 +1,50 @@
 <template>
     <Panel>
+        <span class="flex-row">
+            <label class="row">
+                <span>Advanced Mode</span>
+                <input type="checkbox" v-model="advancedMode"/>
+            </label>
+            <HelpIndicator @update="val => showAdvancedModeHelp = val"/>
+        </span>
+
+        <Panel color="blue" v-if="showAdvancedModeHelp">
+            Advanced mode allows you to select multiple floors.
+            This is helpful if you have done some runs of a floor and its Master Mode variant
+            and want to analyse them collectively.
+        </Panel>
+    </Panel>
+
+    <Panel v-show="advancedMode">
+        <div class="flex-row">
+            <span>Floor(s)</span>
+            <AppMultiSelect v-model="advancedFloors" :options="[
+                {
+                    name: 'Normal Mode',
+                    options: [
+                        { empty: 1 },
+                        { id: 'f5', label: 'F5' },
+                        { id: 'f6', label: 'F6' },
+                        { id: 'f7', label: 'F7' },
+                    ]
+                },
+                {
+                    name: 'Master Mode',
+                    options: [
+                        { id: 'm4', label: 'M4' },
+                        { id: 'm5', label: 'M5' },
+                        { id: 'm6', label: 'M6' },
+                        { id: 'm7', label: 'M7' },
+                    ]
+                },
+            ]"/>
+        </div>
+    </Panel>
+
+    <Panel v-show="!advancedMode">
         <label class="row">
             <span>Floor</span>
-            <AppSelect v-model="floor" :options="[
+            <AppSelect v-model="basicFloor" :options="[
                 {
                     name: 'Normal Mode',
                     options: [
@@ -24,27 +66,25 @@
         </label>
     </Panel>
 
-    <Panel v-if="floor">
-        <label class="row">
+    <Panel v-if="floors.length">
+        <label class="row" v-if="itemSelectorOptions.length">
             <span>Item</span>
             <AppSelect v-model="item" class="extra-wide" :options="itemSelectorOptions" />
         </label>
-        <div class="inline-note" v-if="!rngMeterApplicable">The RNG meter does not apply for this option</div>
-        <label class="row" v-show="rngMeterApplicable">
-            <span>RNG meter used?</span>
-            <input type="checkbox" v-model="rngMeterUsed"/>
-        </label>
+        <div v-else>
+            The selected floors do not share any items.
+        </div>
+    </Panel>
+
+    <Panel v-if="floors.length" v-for="floor in floors" :key="floor">
+        <div class="heading t-gold" v-if="advancedMode">{{ floor.toUpperCase() }}</div>
+        <DungeonsDataSelector v-model="selectorStates[floor]" :item-data="item ? data[floor][item] : undefined"/>
+    </Panel>
+
+    <Panel v-if="floors.length">
         <label class="row">
-            <span>Kismet Feathers used?</span>
-            <input type="checkbox" v-model="kismetFeathersUsed"/>
-        </label>
-        <label class="row">
-            <span>Runs</span>
-            <input type="number" v-model="attempts" min="1"/>
-        </label>
-        <label class="row">
-            <span>Selected item drop count <span v-if="rngMeterUsed" class="inline-note">(NOT including guaranteed drops from completing the RNG meter)</span></span>
-            <input type="number" v-model="successes" min="0" :max="attempts ?? undefined"/>
+            <span>Selected item drop count <span v-if="Object.values(selectorStates).some((el) => el.rngMeterUsed)" class="inline-note">(NOT including guaranteed drops from completing the RNG meter)</span></span>
+            <input type="number" v-model="successes" min="0" :max="attemptsSum"/>
         </label>
     </Panel>
 
@@ -53,8 +93,7 @@
             <span>The real world is complicated, so this mode makes a few assumptions:</span>
             <ul>
                 <li>All runs are S+ with an average 303 score</li>
-                <li v-if="rngMeterUsed">The RNG meter has existed since before you started running the floor</li>
-                <li v-if="kismetFeathersUsed">You use a simple kismet strategy: always reroll unless you got your chosen drop</li>
+                <li v-if="Object.values(selectorStates).some((el) => el.kismetFeathersUsed)">You use a simple kismet strategy: always reroll unless you got your chosen drop</li>
                 <li>You have 5 Boss Luck and a Treasure Artifact <span class="inline-note">(note that this does not affect all items)</span></li>
             </ul>
         </Panel>
@@ -67,30 +106,64 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watchEffect, watch, computed } from "vue";
+import { ref, watchEffect, watch, computed, reactive } from "vue";
 import { poibinUpdate } from "../calc";
 import { currentBackground } from "../Background";
 import Panel from "./Panel.vue";
 import Results from "./Results.vue";
 import AppSelect from "./AppSelect.vue";
+import AppMultiSelect from "./AppMultiSelect.vue";
+import DungeonsDataSelector from "./DungeonsDataSelector.vue";
+import HelpIndicator from "./HelpIndicator.vue";
 import untypedData from "../assets/data/dungeons.json";
+import { DungeonsItemData } from "../DungeonsItemData";
 
 const SCORE_PER_RUN = 303;
 
-type ProbabilitySpecifier = number;
-const data = untypedData as Record<string, Record<string, { name: string, mainChest: ProbabilitySpecifier, otherChests: ProbabilitySpecifier, fillScore: number | null, color: string }>>;
+const data = untypedData as Record<string, Record<string, DungeonsItemData>>;
 
-const floor = ref<string | null>(null);
+const advancedMode = ref(false);
+const showAdvancedModeHelp = ref(false);
+
+const advancedFloors = ref<string[]>([]);
+const basicFloor = ref<string | null>(null);
 const item = ref<string | null>(null);
-const rngMeterUsed = ref(false);
-const kismetFeathersUsed = ref(false);
-const attempts = ref<number | null>(null);
 const successes = ref<number | null>(null);
 
+function makeSelectorState() {
+    return {
+        kismetFeathersUsed: false,
+        rngMeterUsed: false,
+        attemptsBeforeRNGMeter: 0,
+        attempts: null as number | null,
+    }
+}
+
+const selectorStates: Record<string, ReturnType<typeof makeSelectorState>> = reactive({});
+for (const floor of Object.keys(data)) {
+    selectorStates[floor] = makeSelectorState();
+}
+
+const attemptsSum = computed(() => Object.values(selectorStates).reduce((curr, next) => curr + (next.attempts ?? 0), 0));
+
+const floors = computed(() => {
+    if (advancedMode.value) {
+        return advancedFloors.value;
+    } else {
+        return basicFloor.value != null ? [basicFloor.value!] : [];
+    }
+})
+
 const itemSelectorOptions = computed(() => {
-    if (!floor.value) return [];
-    const items = data[floor.value];
-    return Object.entries(items).map(([id, value]) => ({
+    if (!floors.value.length) return [];
+
+    let allowedKeys = Object.keys(data[floors.value[0]]);
+    for (const floor of floors.value) {
+        allowedKeys = allowedKeys.filter((el) => Object.keys(data[floor]).includes(el));
+    }
+
+    const items = data[floors.value[0]];
+    return Object.entries(items).filter(([id]) => allowedKeys.includes(id)).map(([id, value]) => ({
         id,
         label: value.name,
         color: value.color,
@@ -98,20 +171,15 @@ const itemSelectorOptions = computed(() => {
 });
 
 const numCorrectnessWarning = computed(() => {
-    return floor.value && item.value && data[floor.value][item.value] && data[floor.value][item.value].otherChests > 0
+    return floors.value && item.value && data[floors.value[0]][item.value] &&
+        floors.value.every((floor) => data[floor][item.value!].otherChests > 0)
 });
-
-const rngMeterApplicable = computed(() => {
-    if (!floor.value || !item.value) return true;
-    return data[floor.value][item.value].fillScore != null;
-})
 
 // set the background
 watchEffect(() => {
-    switch (floor.value) {
-        case null:
-            currentBackground.value = "dungeons-generic";
-            break;
+    if (floors.value.length == 0) currentBackground.value = "dungeons-generic";
+
+    switch (floors.value[floors.value.length - 1]) {
         case "f1":
         case "m1":
             currentBackground.value = "dungeons-f1";
@@ -146,70 +214,98 @@ watchEffect(() => {
 });
 
 const probabilityArray = computed(() => {
-    if (!floor.value || !item.value || !attempts.value || successes.value == null || successes.value > attempts.value) {
-        return null;
-    } else {
-        const itemData = data[floor.value][item.value];
-        if (!itemData) return null;
-
-        const kismetsUsed = kismetFeathersUsed.value;
-
-        if (itemData.fillScore && rngMeterUsed.value) {
-            console.time("dungeon probability array");
-            const baseChance = itemData.mainChest;
-            const extraChance = itemData.otherChests;
-            const fillScore = itemData.fillScore;
-
-            const result = [];
-            let currentScore = 0;
-
-            for (let i = 0; i < attempts.value; i++) {
-                const mainProb = baseChance * (1 + 2 * currentScore / fillScore);
-                const prob = mainProb + extraChance;
-                result.push(prob);
-                if (kismetsUsed) {
-                    // This is not perfect, but it's the best way I found to simulate kismets
-                    // (it skews the result towards the mean, but for rare drops it should be so little
-                    // that it basically doesn't matter)
-                    // don't include the extra chance since only the main chest is kismeted for
-                    result.push(mainProb * (1 - mainProb));
-                }
-
-                currentScore += SCORE_PER_RUN;
-                if (currentScore >= fillScore) {
-                    currentScore = 0;
-                }
-            }
-            console.timeEnd("dungeon probability array");
-            return result;
+    const results: number[][] = [];
+    for (const floor of floors.value) {
+        const selectorState = selectorStates[floor];
+        if (!floor || !item.value || !selectorState.attempts || successes.value == null ||
+            successes.value > selectorState.attempts || selectorState.attemptsBeforeRNGMeter > selectorState.attempts) {
+            return null;
         } else {
-            // this is also not perfect, but again it's close enough
-            const kismetBonus = kismetsUsed ? (attempts.value - Math.floor(successes.value / 2)) : 0;
-            return new Array(attempts.value + kismetBonus).fill(itemData.mainChest + itemData.otherChests);
+            const itemData = data[floor][item.value];
+            if (!itemData) return null;
+
+            const kismetsUsed = selectorState.kismetFeathersUsed;
+
+            if (itemData.fillScore && selectorState.rngMeterUsed) {
+                console.time("dungeon probability array");
+                const baseChance = itemData.mainChest;
+                const extraChance = itemData.otherChests;
+                const fillScore = itemData.fillScore;
+
+                let result: number[] = new Array(selectorState.attemptsBeforeRNGMeter).fill(baseChance + extraChance);
+                if (kismetsUsed) {
+                    result = [...result, ...(new Array(selectorState.attemptsBeforeRNGMeter).fill(baseChance * (1 - baseChance)))];
+                }
+
+                let currentScore = 15 * selectorState.attemptsBeforeRNGMeter;
+                const attemptsAfterUpdate = selectorState.attempts - selectorState.attemptsBeforeRNGMeter;
+
+                for (let i = 0; i < attemptsAfterUpdate; i++) {
+                    // This assumes that the RNG meter is increased before chests are rolled
+                    // There is no way to know if this is the case, but it simplifies this function
+                    // so I'm assuming it is
+                    currentScore += SCORE_PER_RUN;
+                    if (currentScore >= fillScore) {
+                        currentScore -= fillScore;
+                        continue;
+                    }
+
+                    const mainProb = baseChance * (1 + 2 * currentScore / fillScore);
+                    const prob = mainProb + extraChance;
+                    result.push(prob);
+                    if (kismetsUsed) {
+                        // This is not perfect, but it's the best way I found to simulate kismets
+                        // (it skews the result towards the mean, but for rare drops it should be so little
+                        // that it basically doesn't matter)
+                        // don't include the extra chance since only the main chest is kismeted for
+                        result.push(mainProb * (1 - mainProb));
+                    }
+                }
+                console.timeEnd("dungeon probability array");
+                results.push(result);
+            } else {
+                // this is also not perfect, but again it's close enough
+                const kismetBonus = kismetsUsed ? (selectorState.attempts - Math.floor(successes.value / 2)) : 0;
+                results.push(new Array(selectorState.attempts).fill(itemData.mainChest + itemData.otherChests)
+                    .concat(new Array(kismetBonus).fill(itemData.mainChest)));
+            }
+        }
+    }
+    return Array.prototype.concat(...results);
+});
+
+// keep data in sync
+watch(floors, () => {
+    item.value = null;
+    successes.value = null;
+    for (const key of Object.keys(selectorStates)) {
+        if (!floors.value.includes(key)) {
+            // delete the state if it's deselected
+            // (this is a bit inefficient but who cares)
+            selectorStates[key] = makeSelectorState();
         }
     }
 });
 
-// keep data in sync
-watch(floor, () => {
-    item.value = null;
-    rngMeterUsed.value = false;
-    kismetFeathersUsed.value = false;
-    attempts.value = null;
-    successes.value = null;
-});
 watchEffect(() => {
-    if (attempts.value && successes.value != null) {
-        if (successes.value > attempts.value) {
-            successes.value = attempts.value;
+    if (Object.values(selectorStates).every((el) => el.attempts) && successes.value != null) {
+        if (successes.value > attemptsSum.value) {
+            successes.value = attemptsSum.value;
         }
     }
 });
 
 // recompute when the probabilities change
 watchEffect(() => {
-    if (probabilityArray.value && successes.value != null && successes.value <= attempts.value!) {
+    if (probabilityArray.value && successes.value != null &&
+        successes.value <= attemptsSum.value) {
         poibinUpdate(probabilityArray.value, successes.value);
     }
 });
 </script>
+
+<style scoped>
+.heading {
+    font-weight: bold;
+}
+</style>

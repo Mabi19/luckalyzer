@@ -90,12 +90,19 @@ body {
     min-height: 100vh;
 }
 
-label.row {
+.row {
     display: block;
 }
 
-label.row *:not(:last-child) {
+.row > *:not(:last-child) {
     margin-right: 8px;
+}
+
+.flex-row {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 8px;
+    align-items: center;
 }
 
 hr {
@@ -167,7 +174,7 @@ input[type=text], input[type=number] {
     }
 }
 
-input[type=checkbox] {
+input[type=checkbox]:not(.override) {
     box-sizing: content-box;
     appearance: none;
     width: 18px;
