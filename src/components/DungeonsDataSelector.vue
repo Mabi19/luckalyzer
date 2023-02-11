@@ -10,7 +10,7 @@
     </label>
     <label class="row" v-show="rngMeterApplicable && modelValue.rngMeterUsed">
         <span>Runs before RNG meter update</span>
-        <input type="number" v-model="modelValue.attemptsBeforeRNGMeter" min="0"/>
+        <input type="number" v-model="modelValue.attemptsBeforeRNGMeter" min="0" :max="modelValue.attempts ?? 0"/>
     </label>
     <label class="row">
         <span>Total runs</span>
@@ -19,10 +19,15 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, computed } from "vue";
+import { computed, watchEffect } from "vue";
 import { DungeonsItemData } from "../DungeonsItemData";
 
 const props = defineProps<{
+    // this will be mutated by this component;
+    // since this object is shared with the parent, the data
+    // will update up there too
+    // however, this is passed in with v-model, so the object updating
+    // is what is expected
     modelValue: {
         kismetFeathersUsed: boolean,
         rngMeterUsed: boolean,
