@@ -103,6 +103,7 @@ function test(msg: string) {
     flex-flow: row nowrap;
     gap: 8px;
     justify-content: center;
+    align-items: center;
 }
 
 .heading {
