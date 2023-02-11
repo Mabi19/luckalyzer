@@ -72,7 +72,7 @@
             <AppSelect v-model="item" class="extra-wide" :options="itemSelectorOptions" />
         </label>
         <div v-else>
-            The selected floors do not share items.
+            The selected floors do not share any items.
         </div>
     </Panel>
 
