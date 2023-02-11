@@ -1,6 +1,13 @@
 <template>
     <Panel>
-        <div class="heading t-gold">Probabilities</div>
+        <div class="flex-row heading t-gold">
+            <span>Probabilities</span>
+            <HelpIndicator @update="val => showProbabilitiesHelp = val"/>
+        </div>
+        <Panel color="blue" v-if="showProbabilitiesHelp">
+            All probabilities in Custom mode are expressed as decimal fractions
+            (numbers between 0 and 1)
+        </Panel>
         <div ref="probabilitiesContainer">
             <label v-for="input in inputs" class="row full-width">
                 <input type="text" inputmode="decimal" pattern="^(0|0\.[0-9]+|1)$" v-model="input.probability">
@@ -37,6 +44,7 @@
 
 <script setup lang="ts">
 import Panel from "./Panel.vue";
+import HelpIndicator from "./HelpIndicator.vue";
 import { ref, nextTick, computed, watchEffect } from "vue";
 import { poibinUpdate, isWorking, values, isBigWork } from "../calc";
 import { Background, currentBackground } from "../Background";
@@ -47,6 +55,8 @@ currentBackground.value = "generic";
 const inputs = ref<{ probability: string, count: number, id: number }[]>([]);
 const successes = ref(0);
 const probabilitiesContainer = ref<HTMLDivElement | null>(null);
+
+const showProbabilitiesHelp = ref(false);
 
 const isValid = computed(() => {
     return typeof successes.value == "number" &&

@@ -1,13 +1,22 @@
 <template>
     <Panel>
-        <label class="row">
-            <span>Advanced Mode</span>
-            <input type="checkbox" v-model="advancedMode"/>
-        </label>
+        <span class="flex-row">
+            <label class="row">
+                <span>Advanced Mode</span>
+                <input type="checkbox" v-model="advancedMode"/>
+            </label>
+            <HelpIndicator @update="val => showAdvancedModeHelp = val"/>
+        </span>
+
+        <Panel color="blue" v-if="showAdvancedModeHelp">
+            Advanced mode allows you to select multiple floors.
+            This is helpful if you have done some runs of a floor and its Master Mode variant
+            and want to analyse them collectively.
+        </Panel>
     </Panel>
 
     <Panel v-show="advancedMode">
-        <div class="row">
+        <div class="flex-row">
             <span>Floor(s)</span>
             <AppMultiSelect v-model="advancedFloors" :options="[
                 {
@@ -105,6 +114,7 @@ import Results from "./Results.vue";
 import AppSelect from "./AppSelect.vue";
 import AppMultiSelect from "./AppMultiSelect.vue";
 import DungeonsDataSelector from "./DungeonsDataSelector.vue";
+import HelpIndicator from "./HelpIndicator.vue";
 import untypedData from "../assets/data/dungeons.json";
 import { DungeonsItemData } from "../DungeonsItemData";
 
@@ -113,6 +123,7 @@ const SCORE_PER_RUN = 303;
 const data = untypedData as Record<string, Record<string, DungeonsItemData>>;
 
 const advancedMode = ref(false);
+const showAdvancedModeHelp = ref(false);
 
 const advancedFloors = ref<string[]>([]);
 const basicFloor = ref<string | null>(null);
