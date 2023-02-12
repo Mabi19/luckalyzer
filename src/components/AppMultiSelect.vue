@@ -38,10 +38,6 @@ const selected = computed({
     }
 });
 
-watch(selected, () => {
-    console.log("selected change!", selected.value);
-});
-
 function generateRowDefinition(options: (BaseOption | { empty: number })[]) {
     return "1fr " + options.map((el) => {
         return ('empty' in el ? el.empty : 1) + "fr";
@@ -51,10 +47,6 @@ function generateRowDefinition(options: (BaseOption | { empty: number })[]) {
 const randomIDPart = Math.floor(Math.random() * 16777216).toString(16).padStart(4, "0");
 function makeID(option: BaseOption) {
     return `${randomIDPart}-${option.id}`;
-}
-
-function test(msg: string) {
-    console.log(msg);
 }
 </script>
 
