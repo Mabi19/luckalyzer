@@ -72,7 +72,7 @@ pub fn poibin(probabilities: Box<[f64]>, successes: u32) -> DistributionResult {
     let xi = chi;
 
     // check that they are all real
-    if !xi.iter().all(|val| val.im < f64::EPSILON) {
+    if !xi.iter().all(|val| val.im < 1e-14f64) {
         panic!("some xi value was not real");
     }
 
