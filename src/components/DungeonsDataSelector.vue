@@ -19,7 +19,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, watchEffect } from "vue";
+import { computed } from "vue";
 import { DungeonsItemData } from "../DungeonsItemData";
 
 const props = defineProps<{
@@ -35,10 +35,6 @@ const props = defineProps<{
         attempts: number | null,
     },
     itemData?: DungeonsItemData
-}>();
-
-const emit = defineEmits<{
-    (event: "update:itemData", itemData: typeof props.modelValue): void
 }>();
 
 const rngMeterApplicable = computed(() => {
