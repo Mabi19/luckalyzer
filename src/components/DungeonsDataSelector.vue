@@ -37,6 +37,11 @@ const props = defineProps<{
     itemData?: DungeonsItemData
 }>();
 
+// Not actually used due to object being updated directly
+const emit = defineEmits<{
+    (event: "update:itemData", itemData: typeof props.modelValue): void
+}>();
+
 const rngMeterApplicable = computed(() => {
     return props.itemData && props.itemData.fillScore != null;
 });
