@@ -8,7 +8,7 @@
         <span>RNG meter used?</span>
         <input type="checkbox" v-model="modelValue.rngMeterUsed"/>
     </label>
-    <label class="row" v-show="rngMeterApplicable && modelValue.rngMeterUsed">
+    <label class="row indent" v-show="rngMeterApplicable && modelValue.rngMeterUsed">
         <span>Runs before RNG meter update</span>
         <input type="number" v-model="modelValue.attemptsBeforeRNGMeter" min="0" :max="modelValue.attempts ?? 0"/>
     </label>
