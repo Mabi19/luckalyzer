@@ -8,7 +8,7 @@
         <span>RNG meter used?</span>
         <input type="checkbox" v-model="modelValue.rngMeterUsed"/>
     </label>
-    <label class="row indent" v-show="rngMeterApplicable && modelValue.rngMeterUsed">
+    <label class="row indent" v-show="rngMeterApplicable && modelValue.rngMeterUsed && advancedMode">
         <span>Runs before RNG meter update</span>
         <input type="number" v-model="modelValue.attemptsBeforeRNGMeter" min="0" :max="modelValue.attempts ?? 0"/>
     </label>
@@ -34,7 +34,8 @@ const props = defineProps<{
         attemptsBeforeRNGMeter: number,
         attempts: number | null,
     },
-    itemData?: DungeonsItemData
+    itemData?: DungeonsItemData,
+    advancedMode: boolean
 }>();
 
 // Not actually used due to object being updated directly

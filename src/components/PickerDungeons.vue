@@ -1,4 +1,8 @@
 <template>
+    <Panel color="yellow">
+        The RNG meter fix added on 2023-05-11 is not implemented yet.
+    </Panel>
+
     <Panel>
         <span class="flex-row">
             <label class="row">
@@ -9,7 +13,7 @@
         </span>
 
         <Panel color="blue" v-if="showAdvancedModeHelp">
-            Advanced mode allows you to select multiple floors.
+            Advanced mode shows historical options (useful if you did runs before the RNG meter was introduced) and allows you to select multiple floors.
             This is helpful if you have done some runs of a floor and its Master Mode variant
             and want to analyse them collectively.
         </Panel>
@@ -78,7 +82,7 @@
 
     <Panel v-if="floors.length" v-for="floor in floors" :key="floor">
         <div class="heading t-gold" v-if="advancedMode">{{ floor.toUpperCase() }}</div>
-        <DungeonsDataSelector v-model="selectorStates[floor]" :item-data="item ? data[floor][item] : undefined"/>
+        <DungeonsDataSelector v-model="selectorStates[floor]" :item-data="item ? data[floor][item] : undefined" :advanced-mode="advancedMode"/>
     </Panel>
 
     <Panel v-if="floors.length">
@@ -297,8 +301,9 @@ watchEffect(() => {
 
 // recompute when the probabilities change
 watchEffect(() => {
-    if (probabilityArray.value && successes.value != null &&
+    if (probabilityArray.value && probabilityArray.value.length > 0 && successes.value != null &&
         successes.value <= attemptsSum.value) {
+        console.log(probabilityArray.value);
         poibinUpdate(probabilityArray.value, successes.value);
     }
 });
