@@ -2,24 +2,50 @@
     <Panel>
         <label class="row">
             <span>Total attempts at metaphysical Superpairs</span>
-            <input type="number" v-model="attempts" min="1"/>
+            <input type="number" v-model="attempts" min="1" />
         </label>
         <label class="row">
             <span>T7 books obtained</span>
-            <input type="number" v-model="successes" min="0" :max="attempts ?? undefined"/>
+            <input
+                type="number"
+                v-model="successes"
+                min="0"
+                :max="attempts ?? undefined"
+            />
         </label>
         <label class="row">
             <span>Enderman Slayer LVL 8?</span>
-            <input type="checkbox" v-model="eman8"/>
+            <input type="checkbox" v-model="eman8" />
         </label>
         <label class="row indent" v-if="eman8">
             <span>obtained after completing</span>
-            <input type="number" v-model="eman8After" min="0" :max="attempts ?? undefined"/>
+            <input
+                type="number"
+                v-model="eman8After"
+                min="0"
+                :max="attempts ?? undefined"
+            />
+            <span>metaphysical Superpairs</span>
+        </label>
+        <label class="row">
+            <span>
+                <span class="t-gray">[Lvl 100]</span>&nbsp;Mythic Guardian Pet?
+            </span>
+            <input type="checkbox" v-model="mythicGuardian" />
+        </label>
+        <label class="row indent" v-if="mythicGuardian">
+            <span>obtained after completing</span>
+            <input
+                type="number"
+                v-model="mythicGuardianAfter"
+                min="0"
+                :max="attempts ?? undefined"
+            />
             <span>metaphysical Superpairs</span>
         </label>
     </Panel>
 
-    <Results v-if="probabilityArray && successes != null"/>
+    <Results v-if="probabilityArray && successes != null" />
 </template>
 
 <script setup lang="ts">
@@ -36,12 +62,28 @@ const attempts = ref<number | null>(null);
 const successes = ref<number | null>(null);
 const eman8 = ref(false);
 const eman8After = ref(0);
+const mythicGuardian = ref(false);
+const mythicGuardianAfter = ref(0);
 
 const probabilityArray = computed(() => {
     if (attempts.value && successes.value != null) {
         const beforeEman8 = eman8.value ? eman8After.value : attempts.value;
-        const afterEman8 = eman8.value ? attempts.value - eman8After.value : 0;
-        return new Array(beforeEman8).fill(0.01).concat(new Array(afterEman8).fill(0.0115)) as number[];
+        const beforeMythicGuardian = mythicGuardian.value
+            ? mythicGuardianAfter.value
+            : attempts.value;
+        return new Array(attempts.value).fill(0.01).map((base, idx) => {
+            let mult = 1;
+            // NOTE: This assumes that the probabilities are additive
+            // Enderman Slayer LVL 8
+            if (idx >= beforeEman8) {
+                mult += 0.15;
+            }
+            // [Lvl 100] Mythic Guardian Pet
+            if (idx >= beforeMythicGuardian) {
+                mult += 0.07;
+            }
+            return base * mult;
+        });
     } else {
         return null;
     }
@@ -49,7 +91,11 @@ const probabilityArray = computed(() => {
 
 // recompute when the probabilities change
 watchEffect(() => {
-    if (probabilityArray.value && successes.value != null && successes.value <= attempts.value!) {
+    if (
+        probabilityArray.value &&
+        successes.value != null &&
+        successes.value <= attempts.value!
+    ) {
         poibinUpdate(probabilityArray.value, successes.value);
     }
 });
@@ -65,5 +111,9 @@ watchEffect(() => {
     if (attempts.value && eman8After.value > attempts.value) {
         eman8After.value = attempts.value;
     }
-})
+
+    if (attempts.value && mythicGuardianAfter.value > attempts.value) {
+        mythicGuardianAfter.value = attempts.value;
+    }
+});
 </script>
