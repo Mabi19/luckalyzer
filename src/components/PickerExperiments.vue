@@ -28,9 +28,7 @@
             <span>metaphysical Superpairs</span>
         </label>
         <label class="row">
-            <span>
-                <span class="t-gray">[Lvl 100]</span>&nbsp;Mythic Guardian Pet?
-            </span>
+            <span><span class="t-gray">[Lvl 100]</span> Mythic Guardian Pet?</span>
             <input type="checkbox" v-model="mythicGuardian" />
         </label>
         <label class="row indent" v-if="mythicGuardian">
