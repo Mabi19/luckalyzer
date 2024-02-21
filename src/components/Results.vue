@@ -1,6 +1,6 @@
 <template>
     <Panel v-if="isWorking && isBigWork">
-        <div class="calculating"><LoadingSpinner/><span>Calculating...</span></div>
+        <div class="calculating"><LoadingSpinner /><span>Calculating...</span></div>
     </Panel>
     <Panel v-else-if="updateSeen">
         <div v-html="probabilityText"></div>
@@ -8,7 +8,7 @@
 
     <!-- extra content only to be shown when the result is visible -->
     <template v-if="updateSeen">
-        <slot/>
+        <slot />
     </template>
 </template>
 
@@ -18,14 +18,13 @@ import LoadingSpinner from "./LoadingSpinner.vue";
 import { values, isWorking, isBigWork } from "../calc";
 import { computed, ref, watch } from "vue";
 
-const probability = computed(() => (1.0 - values.cdf) + values.pmf);
+const probability = computed(() => 1.0 - values.cdf + values.pmf);
 // This is used to not show values obtained from a previously selected mode
 const updateSeen = ref(false);
-watch([values], () => updateSeen.value = true);
+watch([values], () => (updateSeen.value = true));
 
 function formatProbability(probability: number) {
-    let stringified = (probability * 100.0)
-        .toPrecision(3);
+    let stringified = (probability * 100.0).toPrecision(3);
     // toPrecision() returns trailing zeroes
     if (stringified.indexOf(".") != -1) {
         stringified = stringified.replace(/\.?0+$/, "");
@@ -35,10 +34,13 @@ function formatProbability(probability: number) {
 
 const probabilityText = computed(() => {
     const probText = formatProbability(probability.value);
+    console.log("updating to: ", probability.value);
     if (probability.value == 0 || probText.includes("e")) {
         return `<span class="t-red">Error</span>: result too small to display accurately`;
     } else {
-        return `<span class="t-yellow">${probText}</span> <span class="t-aqua">(1/${Math.round(1 / probability.value)})</span> of people have your luck or better!`;
+        return `<span class="t-yellow">${probText}</span> <span class="t-aqua">(1/${Math.round(
+            1 / probability.value
+        )})</span> of people have your luck or better!`;
     }
 });
 </script>
