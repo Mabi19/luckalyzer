@@ -1,4 +1,8 @@
 <template>
+    <Panel color="yellow">
+        I have not updated this app in a really long time. It will most likely produce inaccurate results (especially with the advent of the foraging update).
+    </Panel>
+
     <Panel>
         <label class="row">
             <span>Mode</span>
@@ -23,14 +27,14 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import PickerExperiments from "./PickerExperiments.vue";
-import PickerCustom from "./PickerCustom.vue";
-import PickerDungeons from "./PickerDungeons.vue";
-import PickerSlayerBoss from "./PickerSlayerBoss.vue";
-import PickerDragons from "./PickerDragons.vue";
-import PickerMythological from "./PickerMythological.vue";
-import Panel from "./Panel.vue";
 import AppSelect from "./AppSelect.vue";
+import Panel from "./Panel.vue";
+import PickerCustom from "./PickerCustom.vue";
+import PickerDragons from "./PickerDragons.vue";
+import PickerDungeons from "./PickerDungeons.vue";
+import PickerExperiments from "./PickerExperiments.vue";
+import PickerMythological from "./PickerMythological.vue";
+import PickerSlayerBoss from "./PickerSlayerBoss.vue";
 
 const selected = ref<string | null>(null);
 </script>
